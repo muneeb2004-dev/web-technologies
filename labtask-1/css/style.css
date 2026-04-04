@@ -1,0 +1,1202 @@
+/* ============================================================
+   ShopPK — E-Commerce Landing Page Stylesheet
+   Pure CSS, No Frameworks
+   Color Scheme: Navy Blue (#1a237e), Orange (#ff6000), White (#fff)
+   ============================================================ */
+
+/* RESET: removing default browser margins, paddings and box-sizing so layout is consistent */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* FONT + BASE: setting the base font family and background color for the entire page */
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background-color: #f5f5f5;
+    color: #222;
+    line-height: 1.6;
+}
+
+/* TEXT DECORATION: removing underlines from all anchor tags globally */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* LIST STYLE: removing bullet points from all list elements globally */
+ul {
+    list-style: none;
+}
+
+/* ============================================================
+   TOP BAR
+   ============================================================ */
+
+/* BACKGROUND: setting dark navy background for the top announcement bar */
+.top-bar {
+    background-color: #0d1b5e;
+    color: #cfd8f0;
+    font-size: 12.5px;
+    padding: 6px 0;
+}
+
+/* WIDTH 100% + FLEXBOX: making the inner container full-width and spacing left/right content apart */
+.top-bar-inner {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* FLEXBOX: arranging the right-side contact items in a row with spacing between them */
+.top-bar-right {
+    display: flex;
+    gap: 20px;
+}
+
+/* ============================================================
+   NAVBAR
+   ============================================================ */
+
+/* BACKGROUND + POSITION: sticky navy navbar that stays at top when user scrolls */
+.navbar {
+    background-color: #1a237e;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+}
+
+/* Z-INDEX: keeping navbar above all other elements so it never gets hidden behind content */
+/* (already set above on .navbar, this comment applies to that z-index: 1000 declaration) */
+
+/* FLEXBOX: placing logo, search bar, and action buttons in a single horizontal row */
+.navbar-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 14px 20px;
+    gap: 20px;
+}
+
+/* FONT SIZE + COLOR: styling the ShopPK logo text large and white */
+.navbar-logo a {
+    font-size: 28px;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: -0.5px;
+}
+
+/* COLOR: making the "PK" part of the logo the orange accent color */
+.logo-accent {
+    color: #ff6000;
+}
+
+/* FLEXBOX + FLEX-GROW: making the search bar stretch to fill available space between logo and actions */
+.navbar-search {
+    display: flex;
+    flex: 1;
+    max-width: 560px;
+}
+
+/* PADDING + BORDER: styling the search text input with rounded left edge */
+.search-input {
+    width: 100%;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 4px 0 0 4px;
+    font-size: 14px;
+    outline: none;
+    color: #333;
+}
+
+/* BACKGROUND + HOVER: styling the search button with orange accent background */
+.search-btn {
+    background-color: #ff6000;
+    color: #fff;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 0 4px 4px 0;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+/* HOVER: darkening the search button when mouse moves over it */
+.search-btn:hover {
+    background-color: #e05500;
+}
+
+/* FLEXBOX: placing cart icon and login button side by side in a row */
+.navbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+/* POSITION: making the cart icon a relative container so the badge can be positioned on top of it */
+.cart-icon {
+    color: #fff;
+    font-size: 24px;
+    position: relative;
+    cursor: pointer;
+}
+
+/* POSITION + BACKGROUND: placing the orange cart count badge at the top-right of the cart icon */
+.cart-badge {
+    position: absolute;
+    top: -7px;
+    right: -9px;
+    background-color: #ff6000;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 1px 5px;
+    border-radius: 50%;
+}
+
+/* BORDER + PADDING: styling the login button as an outlined white pill button */
+.login-btn {
+    color: #fff;
+    border: 2px solid #fff;
+    padding: 7px 16px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+/* HOVER: filling the login button with white background on hover */
+.login-btn:hover {
+    background-color: #fff;
+    color: #1a237e;
+}
+
+/* BACKGROUND + FLEXBOX: secondary navigation links bar below the main navbar row */
+.nav-links {
+    background-color: #161f6e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    padding: 10px 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* COLOR + FONT: styling each nav link as small white text */
+.nav-links a {
+    color: #d0d9ff;
+    font-size: 13.5px;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+/* HOVER: highlighting nav link in orange when mouse is over it */
+.nav-links a:hover {
+    color: #ff6000;
+}
+
+/* COLOR: making the Sale nav link always show in orange to draw attention */
+.nav-sale {
+    color: #ff6000 !important;
+    font-weight: 700 !important;
+}
+
+/* ============================================================
+   HERO BANNER
+   ============================================================ */
+
+/* BACKGROUND + WIDTH 100%: full-width hero section with gradient background */
+.hero {
+    width: 100%;
+    background: linear-gradient(135deg, #1a237e 0%, #283593 50%, #0d47a1 100%);
+    padding: 90px 20px;
+    text-align: center;
+    color: #fff;
+}
+
+/* WIDTH: centering the hero content with a max-width container */
+.hero-content {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* BACKGROUND + BORDER-RADIUS: small pill tag above the heading */
+.hero-tag {
+    display: inline-block;
+    background-color: rgba(255, 96, 0, 0.2);
+    color: #ffaa70;
+    border: 1px solid rgba(255, 96, 0, 0.5);
+    padding: 5px 18px;
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 18px;
+    letter-spacing: 0.5px;
+}
+
+/* FONT SIZE: large bold heading for maximum visual impact in the hero */
+.hero-heading {
+    font-size: 52px;
+    font-weight: 900;
+    line-height: 1.15;
+    margin-bottom: 18px;
+    letter-spacing: -1px;
+}
+
+/* COLOR + FONT: light subtext below the main heading */
+.hero-subtext {
+    font-size: 17px;
+    color: #b0bde8;
+    margin-bottom: 34px;
+    line-height: 1.7;
+}
+
+/* BACKGROUND + PADDING: main orange CTA button in the hero section */
+.hero-btn {
+    display: inline-block;
+    background-color: #ff6000;
+    color: #fff;
+    padding: 14px 38px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    transition: background-color 0.2s, transform 0.15s;
+}
+
+/* HOVER: darkening and slightly scaling up the hero button on hover */
+.hero-btn:hover {
+    background-color: #e05500;
+    transform: translateY(-2px);
+}
+
+/* ============================================================
+   SHARED SECTION STYLES
+   ============================================================ */
+
+/* WIDTH + MARGIN: a reusable centered container used inside multiple sections */
+.section-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* FONT SIZE + BORDER: section headings with an orange left-side accent border */
+.section-title {
+    font-size: 24px;
+    font-weight: 800;
+    color: #1a237e;
+    margin-bottom: 28px;
+    padding-left: 14px;
+    border-left: 5px solid #ff6000;
+}
+
+/* ============================================================
+   CATEGORIES
+   ============================================================ */
+
+/* BACKGROUND + PADDING: white background section with top and bottom spacing */
+.categories {
+    background-color: #fff;
+    padding: 50px 0;
+}
+
+/* GRID: creating 6 equal columns for category cards in a single row */
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 16px;
+}
+
+/* BACKGROUND + BOX-SHADOW: individual category card styling with shadow and rounded corners */
+.category-card {
+    background-color: #f0f3ff;
+    border-radius: 10px;
+    padding: 28px 16px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
+    border: 1px solid #e0e6ff;
+}
+
+/* BOX-SHADOW + HOVER: elevating the card when mouse moves over it */
+.category-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(26, 35, 126, 0.15);
+    background-color: #1a237e;
+    color: #fff;
+}
+
+/* FONT SIZE: large emoji icon inside each category card */
+.category-icon {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+/* FONT WEIGHT: bold label below each category icon */
+.category-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: #1a237e;
+    transition: color 0.2s;
+}
+
+/* HOVER: turning the category name white when the card is hovered */
+.category-card:hover .category-name {
+    color: #fff;
+}
+
+/* BACKGROUND: special orange background for the Sale category card */
+.category-sale {
+    background-color: #fff3ec;
+    border-color: #ffd0b0;
+}
+
+/* HOVER: keeping sale card orange-tinted on hover */
+.category-sale:hover {
+    background-color: #ff6000;
+}
+
+/* ============================================================
+   PRODUCTS
+   ============================================================ */
+
+/* BACKGROUND + PADDING: light grey background to visually separate the product section */
+.products {
+    background-color: #f5f5f5;
+    padding: 55px 0;
+}
+
+/* GRID: creating 4 equal columns for the product card grid */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+/* BOX-SHADOW + BACKGROUND: white card with subtle shadow to make it look elevated */
+.product-card {
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.07);
+    transition: box-shadow 0.25s, transform 0.25s;
+    border: 1px solid #eee;
+}
+
+/* BOX-SHADOW: increasing shadow intensity when hovering over a product card */
+.product-card:hover {
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.14);
+    transform: translateY(-4px);
+}
+
+/* POSITION: making the image wrapper a relative container so the badge can be placed on top */
+.product-image-wrap {
+    position: relative;
+    overflow: hidden;
+}
+
+/* WIDTH 100%: making the product image fill the full width of the card */
+.product-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s;
+}
+
+/* HOVER: slightly zooming in the product image on card hover for visual effect */
+.product-card:hover .product-image {
+    transform: scale(1.05);
+}
+
+/* POSITION + BACKGROUND: placing the badge label at the top-left corner of the product image */
+.product-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #1a237e;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 9px;
+    border-radius: 3px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* BACKGROUND: orange badge variant for Sale percentage labels */
+.badge-sale {
+    background-color: #ff6000;
+}
+
+/* PADDING: adding internal spacing inside the product information area */
+.product-info {
+    padding: 14px 16px 16px;
+}
+
+/* FONT: product name text — two-line clamp to keep cards uniform height */
+.product-name {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 7px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-height: 1.4;
+    min-height: 38px;
+}
+
+/* COLOR: golden orange color for star rating display */
+.product-stars {
+    color: #ff9900;
+    font-size: 13px;
+    margin-bottom: 8px;
+}
+
+/* COLOR: muted grey for the review count number next to stars */
+.review-count {
+    color: #888;
+    font-size: 11.5px;
+}
+
+/* COLOR + FONT: bold orange price label on each product card */
+.product-price {
+    font-size: 15px;
+    font-weight: 800;
+    color: #ff6000;
+    margin-bottom: 12px;
+}
+
+/* COLOR + TEXT DECORATION: strikethrough style for the original (old) price */
+.price-old {
+    text-decoration: line-through;
+    color: #aaa;
+    font-size: 12px;
+    font-weight: 400;
+    margin-left: 6px;
+}
+
+/* WIDTH 100% + BACKGROUND: full-width orange Add to Cart button at bottom of product card */
+.add-to-cart-btn {
+    width: 100%;
+    background-color: #ff6000;
+    color: #fff;
+    border: none;
+    padding: 9px 0;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    letter-spacing: 0.3px;
+    transition: background-color 0.2s;
+}
+
+/* HOVER: darkening the Add to Cart button when mouse moves over it */
+.add-to-cart-btn:hover {
+    background-color: #e05500;
+}
+
+/* ============================================================
+   PROMOTIONAL BANNER
+   ============================================================ */
+
+/* WIDTH 100% + BACKGROUND: full-width diagonal gradient promotional banner */
+.promo-banner {
+    width: 100%;
+    background: linear-gradient(135deg, #ff6000 0%, #e65c00 40%, #bf4600 100%);
+    padding: 70px 20px;
+    text-align: center;
+    color: #fff;
+}
+
+/* WIDTH: centering the promo banner content */
+.promo-inner {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* FONT + LETTER-SPACING: small uppercase tag above the sale heading */
+.promo-tag {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0.85;
+    margin-bottom: 12px;
+}
+
+/* FONT SIZE: very large bold heading for maximum visual impact in the promo banner */
+.promo-heading {
+    font-size: 50px;
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 16px;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* FONT: lighter subtext below the promo heading */
+.promo-subtext {
+    font-size: 16px;
+    opacity: 0.9;
+    margin-bottom: 30px;
+    line-height: 1.65;
+}
+
+/* BACKGROUND + BORDER: white outlined CTA button for the promo section */
+.promo-btn {
+    display: inline-block;
+    background-color: #fff;
+    color: #ff6000;
+    padding: 13px 36px;
+    border-radius: 4px;
+    font-size: 15px;
+    font-weight: 700;
+    transition: background-color 0.2s, color 0.2s, transform 0.15s;
+}
+
+/* HOVER: inverting the promo button to transparent on hover */
+.promo-btn:hover {
+    background-color: transparent;
+    color: #fff;
+    border: 2px solid #fff;
+    transform: translateY(-2px);
+}
+
+/* ============================================================
+   NEWSLETTER
+   ============================================================ */
+
+/* BACKGROUND + PADDING: dark navy background for the newsletter section */
+.newsletter {
+    background-color: #1a237e;
+    padding: 60px 20px;
+    text-align: center;
+    color: #fff;
+}
+
+/* FONT SIZE: large white heading for the newsletter section */
+.newsletter-heading {
+    font-size: 28px;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+/* COLOR: lighter blue-grey subtext in the newsletter section */
+.newsletter-subtext {
+    font-size: 15px;
+    color: #9fa8da;
+    margin-bottom: 28px;
+}
+
+/* FLEXBOX: placing email input and subscribe button side by side in a row */
+.newsletter-form {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+/* PADDING + BORDER-RADIUS: styling the newsletter email input with rounded left edge */
+.newsletter-input {
+    flex: 1;
+    padding: 13px 20px;
+    border: none;
+    border-radius: 4px 0 0 4px;
+    font-size: 14px;
+    outline: none;
+    color: #333;
+}
+
+/* BACKGROUND: orange subscribe button attached to the right side of the email input */
+.newsletter-btn {
+    background-color: #ff6000;
+    color: #fff;
+    border: none;
+    padding: 13px 26px;
+    border-radius: 0 4px 4px 0;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+/* HOVER: darkening the subscribe button on hover */
+.newsletter-btn:hover {
+    background-color: #e05500;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+
+/* BACKGROUND: very dark navy background for the footer */
+.footer {
+    background-color: #0d1445;
+    color: #b0bde8;
+}
+
+/* GRID: creating 4 equal columns for the footer content */
+.footer-inner {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1.4fr;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 55px 20px 40px;
+}
+
+/* FONT SIZE: large logo text in the footer column */
+.footer-logo {
+    font-size: 26px;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 14px;
+}
+
+/* FONT: small descriptive paragraph in the About ShopPK footer column */
+.footer-about {
+    font-size: 13.5px;
+    line-height: 1.75;
+    margin-bottom: 20px;
+    color: #8898cc;
+}
+
+/* FLEXBOX: placing social icon links in a horizontal row */
+.social-links {
+    display: flex;
+    gap: 10px;
+}
+
+/* BACKGROUND + BORDER: small circular social media icon buttons */
+.social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #b0bde8;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+/* HOVER: orange fill for social icons on hover */
+.social-link:hover {
+    background-color: #ff6000;
+    color: #fff;
+    border-color: #ff6000;
+}
+
+/* FONT SIZE + COLOR: white heading for each footer column */
+.footer-col-heading {
+    font-size: 15px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 18px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid rgba(255, 96, 0, 0.5);
+}
+
+/* PADDING: spacing between each link item in the footer lists */
+.footer-links li {
+    margin-bottom: 9px;
+}
+
+/* COLOR + FONT: styling each footer link as small blue-grey text */
+.footer-links a {
+    color: #8898cc;
+    font-size: 13.5px;
+    transition: color 0.2s, padding-left 0.2s;
+}
+
+/* HOVER: shifting footer links slightly right and turning them orange on hover */
+.footer-links a:hover {
+    color: #ff6000;
+    padding-left: 5px;
+}
+
+/* PADDING: spacing each contact info item in the footer */
+.footer-contact li {
+    font-size: 13.5px;
+    color: #8898cc;
+    margin-bottom: 10px;
+    line-height: 1.55;
+}
+
+/* BACKGROUND + BORDER-TOP: dark copyright bar at the very bottom of the footer */
+.footer-copyright {
+    background-color: #080e2e;
+    text-align: center;
+    padding: 16px 20px;
+    font-size: 13px;
+    color: #5a6a99;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* ================================================
+   MEDIA QUERIES SECTION
+   Everything below this line handles responsiveness
+   for different screen sizes
+   ================================================ */
+
+/* ============================================================
+   MEDIA QUERY: targeting screens smaller than 1024px (tablets)
+   ============================================================ */
+@media (max-width: 1024px) {
+
+    /* GRID COLUMNS: reducing from 4 columns to 2 columns on smaller screens */
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* GRID COLUMNS: reducing footer from 4 columns to 2 columns on tablets */
+    .footer-inner {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* PADDING: reducing section spacing on tablets to fit more content */
+    .categories {
+        padding: 40px 0;
+    }
+
+    /* PADDING: reducing section spacing on tablets to fit more content */
+    .products {
+        padding: 40px 0;
+    }
+}
+
+/* ============================================================
+   MEDIA QUERY: targeting screens smaller than 768px (tablets and mobile)
+   ============================================================ */
+@media (max-width: 768px) {
+
+    /* ================================================
+       TOP BAR RESPONSIVENESS
+       ================================================ */
+
+    /* DISPLAY NONE: hiding contact info on mobile to save space */
+    .top-bar-right {
+        display: none;
+    }
+
+    /* FONT SIZE: making top bar text smaller on mobile */
+    .top-bar {
+        font-size: 11px;
+    }
+
+    /* PADDING: reducing top bar padding on mobile */
+    .top-bar {
+        padding: 5px 0;
+    }
+
+    /* ================================================
+       NAVBAR RESPONSIVENESS
+       ================================================ */
+
+    /* PADDING: reducing navbar padding on mobile */
+    .navbar-inner {
+        padding: 10px 15px;
+    }
+
+    /* FLEX DIRECTION: changing row layout to column layout on mobile */
+    .navbar-inner {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    /* FONT SIZE: making logo smaller so it fits on mobile screen */
+    .navbar-logo a {
+        font-size: 22px;
+    }
+
+    /* DISPLAY NONE: hiding search bar on mobile to save space */
+    .navbar-search {
+        display: none;
+    }
+
+    /* FONT SIZE: making cart icon smaller on mobile */
+    .cart-icon {
+        font-size: 20px;
+    }
+
+    /* FONT SIZE: making login button text smaller on mobile */
+    .login-btn {
+        font-size: 11px;
+        padding: 6px 12px;
+    }
+
+    /* PADDING: reducing navigation links padding on mobile */
+    .nav-links {
+        gap: 12px;
+        flex-wrap: wrap;
+        padding: 8px 15px;
+    }
+
+    /* FONT SIZE: making nav links smaller on mobile */
+    .nav-links a {
+        font-size: 12px;
+    }
+
+    /* ================================================
+       HERO SECTION RESPONSIVENESS
+       ================================================ */
+
+    /* PADDING: reducing hero section padding on mobile so content has more room */
+    .hero {
+        padding: 50px 15px;
+    }
+
+    /* FONT SIZE: making tag smaller on mobile */
+    .hero-tag {
+        font-size: 11px;
+        padding: 4px 14px;
+    }
+
+    /* FONT SIZE: making heading smaller so it fits on mobile screen */
+    .hero-heading {
+        font-size: 32px;
+        margin-bottom: 14px;
+    }
+
+    /* FONT SIZE: making subtext smaller on mobile */
+    .hero-subtext {
+        font-size: 14px;
+        margin-bottom: 24px;
+    }
+
+    /* FONT SIZE: making button smaller on mobile */
+    .hero-btn {
+        font-size: 14px;
+        padding: 12px 28px;
+    }
+
+    /* ================================================
+       CATEGORY CARDS RESPONSIVENESS
+       ================================================ */
+
+    /* PADDING: reducing section padding on mobile so content has more room */
+    .categories {
+        padding: 35px 0;
+    }
+
+    /* GRID COLUMNS: changing from 6 columns to 3 columns on mobile */
+    .category-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+    }
+
+    /* PADDING: reducing category card padding on mobile */
+    .category-card {
+        padding: 20px 12px;
+    }
+
+    /* FONT SIZE: making category icon smaller on mobile */
+    .category-icon {
+        font-size: 28px;
+        margin-bottom: 8px;
+    }
+
+    /* FONT SIZE: making category name smaller on mobile */
+    .category-name {
+        font-size: 12px;
+    }
+
+    /* ================================================
+       PRODUCT CARDS GRID RESPONSIVENESS
+       ================================================ */
+
+    /* PADDING: reducing section padding on mobile so content has more room */
+    .products {
+        padding: 35px 0;
+    }
+
+    /* GRID COLUMNS: changing from 4 columns to 2 columns on mobile */
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+    }
+
+    /* FONT SIZE: making section title smaller on mobile */
+    .section-title {
+        font-size: 20px;
+        margin-bottom: 20px;
+        padding-left: 10px;
+    }
+
+    /* PADDING: reducing product card info padding on mobile */
+    .product-info {
+        padding: 10px 12px 12px;
+    }
+
+    /* FONT SIZE: making product name smaller on mobile */
+    .product-name {
+        font-size: 12px;
+    }
+
+    /* FONT SIZE: making price smaller on mobile */
+    .product-price {
+        font-size: 14px;
+    }
+
+    /* ================================================
+       PROMO BANNER RESPONSIVENESS
+       ================================================ */
+
+    /* PADDING: reducing promo banner padding on mobile so content has more room */
+    .promo-banner {
+        padding: 45px 15px;
+    }
+
+    /* FONT SIZE: making promo tag smaller on mobile */
+    .promo-tag {
+        font-size: 11px;
+        letter-spacing: 1.5px;
+    }
+
+    /* FONT SIZE: making promo heading smaller so it fits on mobile screen */
+    .promo-heading {
+        font-size: 32px;
+        margin-bottom: 12px;
+    }
+
+    /* FONT SIZE: making promo subtext smaller on mobile */
+    .promo-subtext {
+        font-size: 14px;
+        margin-bottom: 24px;
+    }
+
+    /* FONT SIZE: making promo button smaller on mobile */
+    .promo-btn {
+        font-size: 14px;
+        padding: 11px 28px;
+    }
+
+    /* ================================================
+       NEWSLETTER RESPONSIVENESS
+       ================================================ */
+
+    /* PADDING: reducing newsletter section padding on mobile so content has more room */
+    .newsletter {
+        padding: 40px 15px;
+    }
+
+    /* FONT SIZE: making newsletter heading smaller on mobile */
+    .newsletter-heading {
+        font-size: 22px;
+    }
+
+    /* FONT SIZE: making newsletter subtext smaller on mobile */
+    .newsletter-subtext {
+        font-size: 13px;
+        margin-bottom: 20px;
+    }
+
+    /* FLEX DIRECTION: changing row layout to column layout on mobile */
+    .newsletter-form {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    /* WIDTH 100%: making email input full width on mobile for easier tapping */
+    .newsletter-input {
+        border-radius: 4px;
+        width: 100%;
+    }
+
+    /* WIDTH 100%: making button full width on mobile for easier tapping */
+    .newsletter-btn {
+        border-radius: 4px;
+        width: 100%;
+        padding: 12px 20px;
+    }
+
+    /* ================================================
+       FOOTER RESPONSIVENESS
+       ================================================ */
+
+    /* PADDING: reducing footer padding on mobile so content has more room */
+    .footer-inner {
+        padding: 40px 15px 30px;
+        gap: 30px;
+    }
+
+    /* GRID COLUMNS: changing from 4 columns to 2 columns on mobile */
+    .footer-inner {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* FONT SIZE: making footer logo smaller on mobile */
+    .footer-logo {
+        font-size: 22px;
+    }
+
+    /* FONT SIZE: making footer about text smaller on mobile */
+    .footer-about {
+        font-size: 12px;
+    }
+
+    /* FONT SIZE: making footer headings smaller on mobile */
+    .footer-col-heading {
+        font-size: 14px;
+        margin-bottom: 14px;
+    }
+
+    /* FONT SIZE: making footer links smaller on mobile */
+    .footer-links a {
+        font-size: 12px;
+    }
+
+    /* FONT SIZE: making footer contact info smaller on mobile */
+    .footer-contact li {
+        font-size: 12px;
+    }
+
+    /* FONT SIZE: making copyright text smaller on mobile */
+    .footer-copyright {
+        font-size: 11px;
+        padding: 14px 15px;
+    }
+}
+
+/* ============================================================
+   MEDIA QUERY: targeting screens smaller than 480px (small mobile phones)
+   ============================================================ */
+@media (max-width: 480px) {
+
+    /* ================================================
+       CATEGORY CARDS RESPONSIVENESS
+       ================================================ */
+
+    /* GRID COLUMNS: changing from 3 columns to 2 columns on mobile */
+    .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* ================================================
+       PRODUCT CARDS GRID RESPONSIVENESS
+       ================================================ */
+
+    /* GRID COLUMNS: changing from 2 columns to 1 column on mobile */
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* WIDTH 100%: making product image width 100% on mobile */
+    .product-image {
+        width: 100%;
+    }
+
+    /* WIDTH 100%: making button full width on mobile for easier tapping */
+    .add-to-cart-btn {
+        width: 100%;
+    }
+
+    /* ================================================
+       FOOTER RESPONSIVENESS
+       ================================================ */
+
+    /* GRID COLUMNS: changing from 2 columns to 1 column on mobile */
+    .footer-inner {
+        grid-template-columns: 1fr;
+    }
+
+    /* TEXT ALIGN CENTER: centering footer content on mobile */
+    .footer-col {
+        text-align: center;
+    }
+
+    /* TEXT ALIGN CENTER: centering footer about text on mobile */
+    .footer-about {
+        text-align: center;
+    }
+
+    /* STACK: changing side by side layout to top bottom layout on mobile */
+    .social-links {
+        justify-content: center;
+    }
+
+    /* TEXT ALIGN CENTER: centering footer links on mobile */
+    .footer-links {
+        text-align: center;
+    }
+
+    /* TEXT ALIGN CENTER: centering footer contact info on mobile */
+    .footer-contact {
+        text-align: center;
+    }
+
+    /* PADDING: removing left padding shift effect on mobile */
+    .footer-links a:hover {
+        padding-left: 0;
+    }
+
+    /* ================================================
+       HERO SECTION RESPONSIVENESS
+       ================================================ */
+
+    /* FONT SIZE: making hero heading even smaller on very small screens */
+    .hero-heading {
+        font-size: 26px;
+    }
+
+    /* FONT SIZE: making hero subtext even smaller on very small screens */
+    .hero-subtext {
+        font-size: 13px;
+    }
+
+    /* WIDTH 100%: making button full width on mobile for easier tapping */
+    .hero-btn {
+        display: block;
+        width: 100%;
+        max-width: 280px;
+        margin: 0 auto;
+    }
+
+    /* ================================================
+       PROMO BANNER RESPONSIVENESS
+       ================================================ */
+
+    /* FONT SIZE: making promo heading even smaller on very small screens */
+    .promo-heading {
+        font-size: 26px;
+    }
+
+    /* WIDTH 100%: making button full width on mobile for easier tapping */
+    .promo-btn {
+        display: block;
+        width: 100%;
+        max-width: 280px;
+        margin: 0 auto;
+    }
+
+    /* ================================================
+       GENERAL MOBILE RESPONSIVENESS
+       ================================================ */
+
+    /* PADDING: reducing container padding on very small screens */
+    .section-container {
+        padding: 0 15px;
+    }
+
+    /* FONT SIZE: making all headings slightly smaller on very small screens */
+    .section-title {
+        font-size: 18px;
+    }
+}
