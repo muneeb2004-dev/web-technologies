@@ -1,0 +1,16 @@
+{
+  "name": "assignment-3",
+  "version": "1.0.0",
+  "description": "ShopPK E-Commerce Landing Page with Express.js and EJS",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "ejs": "^3.1.9"
+  }
+}
