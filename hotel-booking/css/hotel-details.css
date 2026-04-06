@@ -1,0 +1,805 @@
+/* ================================================================
+   PAKSTAY — HOTEL DETAILS PAGE  (hotel-details.css)
+   Depends on: style.css
+================================================================ */
+
+
+/* ================================================================
+   IMAGE GALLERY
+================================================================ */
+.gallery-section {
+    padding-top: 80px; /* clear fixed navbar */
+    background: var(--on-surface);
+    position: relative;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 380px 200px;
+    gap: 4px;
+    height: 584px;
+}
+
+.gallery-main {
+    grid-row: 1 / 3;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.gallery-thumb {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.gallery-main img,
+.gallery-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+}
+.gallery-main:hover img,
+.gallery-thumb:hover img { transform: scale(1.05); }
+
+/* "See all photos" overlay on last thumb */
+.gallery-thumb-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(29, 28, 16, 0.62);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    gap: 0.5rem;
+    font-size: var(--body-md);
+    font-weight: 600;
+    transition: background var(--transition-fast);
+    cursor: pointer;
+}
+.gallery-thumb-overlay:hover { background: rgba(29, 28, 16, 0.75); }
+.gallery-thumb-overlay i { font-size: 1.5rem; margin-bottom: 0.25rem; }
+
+/* Gallery action buttons (top-right of main image) */
+.gallery-actions {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    display: flex;
+    gap: 0.625rem;
+    z-index: 5;
+}
+.gallery-action-btn {
+    width: 38px;
+    height: 38px;
+    background: rgba(255,255,255,0.88);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.875rem;
+    color: var(--on-surface);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    border: none;
+}
+.gallery-action-btn:hover  { background: white; transform: scale(1.05); }
+.gallery-action-btn.saved  { color: var(--tertiary); }
+
+
+/* ================================================================
+   LIGHTBOX (full-screen gallery)
+================================================================ */
+.lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(29, 28, 16, 0.96);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--transition-base), visibility var(--transition-base);
+}
+.lightbox.open { opacity: 1; visibility: visible; }
+
+.lightbox-img {
+    max-width: 90vw;
+    max-height: 85vh;
+    object-fit: contain;
+    border-radius: var(--radius-md);
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    color: rgba(255,255,255,0.7);
+    font-size: 2rem;
+    cursor: pointer;
+    transition: color var(--transition-fast);
+    background: none;
+    border: none;
+}
+.lightbox-close:hover { color: white; }
+
+.lightbox-prev,
+.lightbox-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.12);
+    color: white;
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.125rem;
+    cursor: pointer;
+    transition: background var(--transition-fast);
+    border: none;
+}
+.lightbox-prev { left: 1.5rem; }
+.lightbox-next { right: 1.5rem; }
+.lightbox-prev:hover,
+.lightbox-next:hover { background: rgba(255,255,255,0.24); }
+
+.lightbox-counter {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(255,255,255,0.6);
+    font-size: var(--body-md);
+}
+
+
+/* ================================================================
+   HOTEL INFO + BOOKING SIDEBAR LAYOUT
+================================================================ */
+.hotel-detail-layout {
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    gap: 3rem;
+    align-items: start;
+    padding-block: 3rem;
+}
+
+.hotel-detail-main { min-width: 0; }
+
+
+/* ================================================================
+   HOTEL HEADER
+================================================================ */
+.hotel-header-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.hotel-title-block {}
+
+.hotel-detail-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: var(--label-md);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--secondary);
+    margin-bottom: 0.625rem;
+}
+.hotel-detail-tag i { color: var(--tertiary); font-size: 0.625rem; }
+
+.hotel-detail-name {
+    font-family: 'Newsreader', serif;
+    font-size: clamp(1.75rem, 3vw, var(--display-sm));
+    font-weight: 400;
+    color: var(--on-surface);
+    letter-spacing: -0.02em;
+    margin-bottom: 0.5rem;
+}
+
+.hotel-detail-location {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: var(--body-md);
+    color: var(--on-surface-variant);
+}
+.hotel-detail-location i { color: var(--tertiary); }
+
+.hotel-rating-block { text-align: right; flex-shrink: 0; }
+
+.hotel-rating-score {
+    font-family: 'Newsreader', serif;
+    font-size: 3rem;
+    font-weight: 300;
+    color: var(--primary);
+    line-height: 1;
+    letter-spacing: -0.03em;
+}
+.hotel-rating-label {
+    font-size: var(--label-md);
+    font-weight: 700;
+    color: var(--secondary);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+.hotel-rating-count {
+    font-size: var(--body-md);
+    color: var(--on-surface-variant);
+    margin-top: 0.25rem;
+}
+
+/* Quick info pills row */
+.hotel-quick-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1.375rem 0;
+    border-top: 1px solid var(--outline-variant);
+    border-bottom: 1px solid var(--outline-variant);
+    margin-bottom: 2rem;
+}
+
+.quick-info-item {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    font-size: var(--body-md);
+    color: var(--on-surface-variant);
+}
+.quick-info-icon {
+    width: 32px; height: 32px;
+    background: var(--secondary-container);
+    color: var(--primary);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    flex-shrink: 0;
+}
+.quick-info-text { font-weight: 500; color: var(--on-surface); }
+
+
+/* ================================================================
+   DESCRIPTION TAB AREA
+================================================================ */
+.detail-tabs {
+    display: flex;
+    gap: 0;
+    border-bottom: 1px solid var(--outline-variant);
+    margin-bottom: 2rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+.detail-tabs::-webkit-scrollbar { display: none; }
+
+.detail-tab {
+    padding: 0.875rem 1.375rem;
+    font-size: var(--body-md);
+    font-weight: 600;
+    color: var(--on-surface-variant);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    white-space: nowrap;
+    background: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    transition: all var(--transition-fast);
+}
+.detail-tab:hover  { color: var(--primary); }
+.detail-tab.active {
+    color: var(--primary);
+    border-bottom-color: var(--primary);
+}
+
+.detail-panel { display: none; }
+.detail-panel.active { display: block; }
+
+
+/* ================================================================
+   OVERVIEW PANEL
+================================================================ */
+.hotel-description {
+    font-size: var(--body-lg);
+    color: var(--on-surface-variant);
+    line-height: 1.8;
+    margin-bottom: 2rem;
+}
+
+.hotel-description-more {
+    display: none;
+}
+
+.read-more-btn {
+    font-size: var(--body-md);
+    font-weight: 700;
+    color: var(--primary);
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    margin-bottom: 2.5rem;
+    transition: color var(--transition-fast);
+}
+.read-more-btn:hover { color: var(--primary-container); }
+
+
+/* ================================================================
+   AMENITIES GRID
+================================================================ */
+.amenities-section-title {
+    font-family: 'Newsreader', serif;
+    font-size: var(--headline-sm);
+    font-weight: 500;
+    color: var(--on-surface);
+    margin-bottom: 1.375rem;
+}
+
+.amenities-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.875rem;
+    margin-bottom: 2.5rem;
+}
+
+.amenity-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.875rem 1rem;
+    background: var(--surface-low);
+    border-radius: var(--radius-md);
+    font-size: var(--body-md);
+    color: var(--on-surface-variant);
+    transition: background var(--transition-fast);
+}
+.amenity-item:hover { background: var(--secondary-container); color: var(--primary); }
+.amenity-item i { color: var(--primary); font-size: 0.875rem; width: 16px; text-align: center; }
+
+
+/* ================================================================
+   ROOMS TAB
+================================================================ */
+.rooms-list { display: flex; flex-direction: column; gap: 1.375rem; }
+
+.room-card {
+    display: grid;
+    grid-template-columns: 220px 1fr auto;
+    background: var(--surface-lowest);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-xs);
+    transition: box-shadow var(--transition-base);
+}
+.room-card:hover { box-shadow: var(--shadow-md); }
+
+.room-image {
+    overflow: hidden;
+}
+.room-image img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+}
+.room-card:hover .room-image img { transform: scale(1.05); }
+
+.room-body { padding: 1.25rem 1.5rem; }
+
+.room-type-tag {
+    font-size: var(--label-md);
+    font-weight: 700;
+    color: var(--secondary);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 0.375rem;
+}
+
+.room-name {
+    font-family: 'Newsreader', serif;
+    font-size: var(--headline-sm);
+    color: var(--on-surface);
+    margin-bottom: 0.5rem;
+}
+
+.room-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 0.75rem;
+}
+
+.room-feature {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-size: var(--label-md);
+    color: var(--on-surface-variant);
+}
+.room-feature i { color: var(--secondary); font-size: 0.75rem; }
+
+.room-pricing {
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 0.75rem;
+    border-left: 1px solid var(--outline-variant);
+    min-width: 140px;
+}
+
+.room-price {
+    text-align: right;
+}
+.room-price-amount {
+    font-family: 'Newsreader', serif;
+    font-size: var(--headline-md);
+    color: var(--primary);
+    font-weight: 400;
+    display: block;
+}
+.room-price-label {
+    font-size: var(--label-md);
+    color: var(--on-surface-variant);
+}
+
+.room-availability {
+    font-size: var(--label-md);
+    color: #3a7d44;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+}
+.room-availability i { font-size: 0.5rem; }
+
+
+/* ================================================================
+   REVIEWS TAB
+================================================================ */
+.reviews-summary {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 3rem;
+    align-items: center;
+    background: var(--surface-low);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.reviews-big-score {
+    text-align: center;
+}
+.big-score-number {
+    font-family: 'Newsreader', serif;
+    font-size: 5rem;
+    font-weight: 300;
+    color: var(--primary);
+    line-height: 1;
+    letter-spacing: -0.04em;
+    display: block;
+}
+.big-score-label {
+    font-size: var(--body-md);
+    font-weight: 700;
+    color: var(--secondary);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-top: 0.375rem;
+    display: block;
+}
+.big-score-count {
+    font-size: var(--label-md);
+    color: var(--on-surface-variant);
+    margin-top: 0.25rem;
+    display: block;
+}
+
+.reviews-bars { flex: 1; }
+
+.review-bar-row {
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+    margin-bottom: 0.75rem;
+    font-size: var(--body-md);
+}
+.review-bar-label {
+    width: 80px;
+    color: var(--on-surface-variant);
+    flex-shrink: 0;
+}
+.review-bar-track {
+    flex: 1;
+    height: 6px;
+    background: var(--surface-highest);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+}
+.review-bar-fill {
+    height: 100%;
+    background: var(--gradient-primary);
+    border-radius: var(--radius-full);
+    transition: width var(--transition-slow);
+}
+.review-bar-score {
+    width: 30px;
+    text-align: right;
+    font-weight: 600;
+    color: var(--on-surface);
+}
+
+/* Individual review cards */
+.reviews-list { display: flex; flex-direction: column; gap: 1.375rem; }
+
+.review-card {
+    background: var(--surface-lowest);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-xs);
+}
+
+.review-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.review-author {
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+}
+
+.review-avatar {
+    width: 42px; height: 42px;
+    border-radius: var(--radius-full);
+    background: var(--secondary-container);
+    color: var(--primary);
+    font-size: var(--body-md);
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.review-name { font-weight: 700; font-size: var(--body-md); }
+.review-date { font-size: var(--label-md); color: var(--on-surface-variant); margin-top: 0.125rem; }
+
+.review-text {
+    font-size: var(--body-md);
+    color: var(--on-surface-variant);
+    line-height: 1.75;
+}
+
+.review-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.875rem;
+}
+.review-tag {
+    background: var(--secondary-container);
+    color: var(--primary);
+    padding: 0.2rem 0.625rem;
+    border-radius: var(--radius-full);
+    font-size: var(--label-md);
+    font-weight: 600;
+}
+
+
+/* ================================================================
+   BOOKING SIDEBAR (sticky)
+================================================================ */
+.booking-sidebar {
+    position: sticky;
+    top: 90px;
+}
+
+.booking-card {
+    background: var(--surface-lowest);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+}
+
+.booking-card-header {
+    background: var(--gradient-primary);
+    padding: 1.5rem;
+    color: white;
+    text-align: center;
+}
+
+.booking-price-display {
+    font-family: 'Newsreader', serif;
+    font-size: var(--display-sm);
+    font-weight: 300;
+    letter-spacing: -0.03em;
+    line-height: 1;
+}
+.booking-price-label {
+    font-size: var(--body-md);
+    opacity: 0.7;
+    margin-top: 0.25rem;
+}
+
+.booking-card-body { padding: 1.5rem; }
+
+.booking-form { display: flex; flex-direction: column; gap: 1rem; }
+
+.booking-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+}
+
+.booking-label {
+    font-size: var(--label-md);
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--secondary);
+}
+
+.booking-input {
+    background: var(--surface-low);
+    border: none;
+    border-bottom: 2px solid var(--outline-variant);
+    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+    padding: 0.75rem 1rem;
+    color: var(--on-surface);
+    font-size: var(--body-lg);
+    width: 100%;
+    transition: border-color var(--transition-fast);
+    outline: none;
+}
+.booking-input:focus { border-bottom-color: var(--primary); }
+
+.booking-dates-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+}
+
+/* Guest counter in sidebar */
+.booking-guests-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--surface-low);
+    border-bottom: 2px solid var(--outline-variant);
+    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+    padding: 0.75rem 1rem;
+}
+.booking-guests-ctrl {
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+}
+.booking-guests-btn {
+    width: 28px; height: 28px;
+    border-radius: var(--radius-sm);
+    background: var(--secondary-container);
+    color: var(--primary);
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-weight: 700;
+    transition: background var(--transition-fast);
+    border: none;
+    line-height: 1;
+}
+.booking-guests-btn:hover { background: var(--surface-high); }
+.booking-guests-count { font-weight: 700; font-size: var(--body-lg); min-width: 1.5rem; text-align: center; }
+
+/* Price breakdown */
+.price-breakdown {
+    background: var(--surface-low);
+    border-radius: var(--radius-md);
+    padding: 1.125rem;
+    margin: 0.5rem 0;
+}
+.price-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: var(--body-md);
+    color: var(--on-surface-variant);
+    margin-bottom: 0.625rem;
+}
+.price-row:last-child {
+    margin-bottom: 0;
+    padding-top: 0.625rem;
+    border-top: 1px solid var(--outline-variant);
+    color: var(--on-surface);
+    font-weight: 700;
+}
+.price-row strong { color: var(--on-surface); }
+
+.booking-submit {
+    width: 100%;
+    padding: 1rem;
+    font-size: var(--body-lg);
+    border-radius: var(--radius-md);
+    background: var(--gradient-primary);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: 700;
+    transition: all var(--transition-base);
+}
+.booking-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    filter: brightness(1.06);
+}
+
+.booking-note {
+    text-align: center;
+    font-size: var(--label-md);
+    color: var(--on-surface-variant);
+    margin-top: 0.75rem;
+}
+.booking-note i { color: var(--secondary); margin-right: 0.25rem; }
+
+
+/* ================================================================
+   SIMILAR HOTELS
+================================================================ */
+.similar-section {
+    background: var(--surface-low);
+}
+
+.similar-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+
+/* ================================================================
+   RESPONSIVE
+================================================================ */
+@media (max-width: 1024px) {
+    .hotel-detail-layout { grid-template-columns: 1fr; }
+    .booking-sidebar { position: static; }
+    .similar-grid { grid-template-columns: repeat(2, 1fr); }
+    .amenities-grid { grid-template-columns: repeat(2, 1fr); }
+    .gallery-grid { height: 400px; grid-template-rows: 260px 136px; }
+}
+
+@media (max-width: 768px) {
+    .gallery-grid { grid-template-columns: 1fr; grid-template-rows: 300px; }
+    .gallery-thumb { display: none; }
+    .gallery-main { grid-row: 1; }
+    .room-card { grid-template-columns: 1fr; }
+    .room-image { height: 180px; }
+    .room-pricing { border-left: none; border-top: 1px solid var(--outline-variant); flex-direction: row; justify-content: space-between; }
+    .similar-grid { grid-template-columns: 1fr; }
+    .reviews-summary { grid-template-columns: 1fr; gap: 1.5rem; }
+}

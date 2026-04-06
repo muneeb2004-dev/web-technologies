@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pearl Continental Lahore — PakStay</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/hotel-details.css">
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+<!-- NAVBAR — solid on this inner page -->
+<nav class="navbar solid" id="navbar">
+    <div class="container">
+        <div class="navbar-inner">
+            <a href="index.html" class="navbar-logo">Pak<span>Stay</span></a>
+            <ul class="navbar-nav">
+                <li><a href="index.html"  class="nav-link">Home</a></li>
+                <li><a href="hotels.html" class="nav-link">Hotels</a></li>
+                <li><a href="about.html"  class="nav-link">About</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="navbar-actions">
+                <a href="login.html"  class="navbar-btn-login">Sign In</a>
+                <a href="signup.html" class="navbar-btn-signup">Register</a>
+            </div>
+            <button class="navbar-hamburger" id="hamburgerBtn">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+        </div>
+    </div>
+</nav>
+
+<div class="navbar-mobile" id="mobileMenu">
+    <button class="mobile-close" id="mobileClose">&times;</button>
+    <ul>
+        <li><a href="index.html"  class="mobile-nav-link">Home</a></li>
+        <li><a href="hotels.html" class="mobile-nav-link">Hotels</a></li>
+        <li><a href="about.html"  class="mobile-nav-link">About</a></li>
+        <li><a href="contact.html" class="mobile-nav-link">Contact</a></li>
+    </ul>
+    <div class="mobile-auth">
+        <a href="login.html"  class="btn btn-secondary">Sign In</a>
+        <a href="signup.html" class="btn btn-primary">Register</a>
+    </div>
+</div>
+
+
+<!-- ================================================================
+     IMAGE GALLERY
+================================================================ -->
+<section class="gallery-section">
+    <div class="gallery-grid">
+
+        <!-- Main large image -->
+        <div class="gallery-main" id="galleryMain" data-index="0">
+            <img src="https://picsum.photos/seed/pc-lhr-main/1200/800" alt="Pearl Continental Lahore — Lobby" id="mainGalleryImg">
+            <!-- Action buttons: share + wishlist -->
+            <div class="gallery-actions">
+                <button class="gallery-action-btn" id="shareBtn" title="Share">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+                <button class="gallery-action-btn" id="wishlistBtn" title="Save to wishlist">
+                    <i class="far fa-heart"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Thumbnail 1 -->
+        <div class="gallery-thumb" data-index="1">
+            <img src="https://picsum.photos/seed/pc-lhr-room/600/400" alt="Deluxe Room">
+        </div>
+
+        <!-- Thumbnail 2 — "See all photos" overlay -->
+        <div class="gallery-thumb" data-index="2" id="galleryMoreBtn">
+            <img src="https://picsum.photos/seed/pc-lhr-pool/600/400" alt="Swimming Pool">
+            <div class="gallery-thumb-overlay">
+                <i class="fas fa-images"></i>
+                <span>See all 38 photos</span>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ================================================================
+     LIGHTBOX
+================================================================ -->
+<div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightboxClose">&times;</button>
+    <button class="lightbox-prev" id="lightboxPrev"><i class="fas fa-chevron-left"></i></button>
+    <img src="" alt="" class="lightbox-img" id="lightboxImg">
+    <button class="lightbox-next" id="lightboxNext"><i class="fas fa-chevron-right"></i></button>
+    <div class="lightbox-counter" id="lightboxCounter">1 / 5</div>
+</div>
+
+
+<!-- ================================================================
+     MAIN CONTENT + BOOKING SIDEBAR
+================================================================ -->
+<main>
+    <div class="container">
+
+        <!-- Breadcrumb -->
+        <div class="page-breadcrumb" style="padding-top:1.5rem; margin-bottom: -1rem;">
+            <a href="index.html" style="color:var(--on-surface-variant);">Home</a>
+            <span class="breadcrumb-sep" style="color:var(--outline-variant);">/</span>
+            <a href="hotels.html" style="color:var(--on-surface-variant);">Hotels</a>
+            <span class="breadcrumb-sep" style="color:var(--outline-variant);">/</span>
+            <span style="color:var(--on-surface);">Pearl Continental Lahore</span>
+        </div>
+
+        <div class="hotel-detail-layout">
+
+            <!-- ============================================================
+                 MAIN COLUMN
+            ============================================================ -->
+            <div class="hotel-detail-main">
+
+                <!-- Hotel Header -->
+                <div class="hotel-header-row">
+                    <div class="hotel-title-block">
+                        <div class="hotel-detail-tag">
+                            <i class="fas fa-circle"></i>
+                            5-Star · Luxury · Heritage
+                        </div>
+                        <h1 class="hotel-detail-name">Pearl Continental Hotel</h1>
+                        <div class="hotel-detail-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            The Mall, Lahore, Punjab, Pakistan
+                            <a href="#location-tab" style="color:var(--primary); font-weight:600; margin-left:0.5rem; font-size:var(--label-md);">View Map</a>
+                        </div>
+                    </div>
+                    <div class="hotel-rating-block">
+                        <div class="hotel-rating-score">4.9</div>
+                        <div class="stars" style="justify-content:flex-end; margin-top:0.375rem;">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <div class="hotel-rating-label">Exceptional</div>
+                        <div class="hotel-rating-count">Based on 1,247 reviews</div>
+                    </div>
+                </div>
+
+                <!-- Quick Info Pills -->
+                <div class="hotel-quick-info">
+                    <div class="quick-info-item">
+                        <div class="quick-info-icon"><i class="fas fa-bed"></i></div>
+                        <div>
+                            <div class="quick-info-text">340 Rooms</div>
+                            <div style="font-size:var(--label-md); color:var(--on-surface-variant);">7 Room Types</div>
+                        </div>
+                    </div>
+                    <div class="quick-info-item">
+                        <div class="quick-info-icon"><i class="fas fa-utensils"></i></div>
+                        <div>
+                            <div class="quick-info-text">4 Restaurants</div>
+                            <div style="font-size:var(--label-md); color:var(--on-surface-variant);">Fine Dining + Casual</div>
+                        </div>
+                    </div>
+                    <div class="quick-info-item">
+                        <div class="quick-info-icon"><i class="fas fa-swimming-pool"></i></div>
+                        <div>
+                            <div class="quick-info-text">Outdoor Pool</div>
+                            <div style="font-size:var(--label-md); color:var(--on-surface-variant);">Open year-round</div>
+                        </div>
+                    </div>
+                    <div class="quick-info-item">
+                        <div class="quick-info-icon"><i class="fas fa-car"></i></div>
+                        <div>
+                            <div class="quick-info-text">Free Parking</div>
+                            <div style="font-size:var(--label-md); color:var(--on-surface-variant);">Valet available</div>
+                        </div>
+                    </div>
+                    <div class="quick-info-item">
+                        <div class="quick-info-icon"><i class="fas fa-wifi"></i></div>
+                        <div>
+                            <div class="quick-info-text">Free WiFi</div>
+                            <div style="font-size:var(--label-md); color:var(--on-surface-variant);">High-speed</div>
+                        </div>
+                    </div>
+                    <div class="quick-info-item">
+                        <div class="quick-info-icon"><i class="fas fa-ban-smoking"></i></div>
+                        <div>
+                            <div class="quick-info-text">Smoke-free</div>
+                            <div style="font-size:var(--label-md); color:var(--on-surface-variant);">Designated areas</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detail Tabs -->
+                <div class="detail-tabs">
+                    <button class="detail-tab active" data-panel="overview">Overview</button>
+                    <button class="detail-tab" data-panel="rooms">Rooms &amp; Rates</button>
+                    <button class="detail-tab" data-panel="amenities-tab">Amenities</button>
+                    <button class="detail-tab" data-panel="reviews">Reviews</button>
+                    <button class="detail-tab" data-panel="location-tab">Location</button>
+                </div>
+
+                <!-- ---- OVERVIEW PANEL ---- -->
+                <div class="detail-panel active" id="overview">
+                    <p class="hotel-description">
+                        Pearl Continental Hotel Lahore stands as an enduring symbol of luxury and excellence on The Mall — the historic boulevard of one of South Asia's most storied cities. Established in 1964, it has been the address of choice for dignitaries, business leaders, and discerning travellers from around the world for six decades.
+                    </p>
+                    <p class="hotel-description hotel-description-more" id="hotelDescMore">
+                        The hotel's architecture is a masterful dialogue between Mughal grandeur and contemporary elegance. Soaring marble lobbies adorned with traditional Pakistani craftsmanship give way to 340 impeccably appointed rooms and suites, each offering the perfect balance of traditional warmth and modern comfort. Floor-to-ceiling windows in deluxe rooms frame the leafy tree canopy of The Mall.
+                        <br><br>
+                        Dining at Pearl Continental is its own journey. The Marco Polo restaurant offers international cuisine in a setting of understated luxury. Tai Pan is Lahore's finest Chinese restaurant. The Polo Lounge serves the city's most revered afternoon tea. And the Layalpur Café provides an all-day dining experience with authentic Pakistani flavours.
+                        <br><br>
+                        The Pearl Spa offers a comprehensive menu of treatments drawing on both ancient Pakistani wellness traditions and contemporary techniques. The fitness centre is open 24 hours. The outdoor pool and sundeck remain a cherished feature of Lahore's social scene.
+                    </p>
+                    <button class="read-more-btn" id="readMoreBtn">
+                        Read More <i class="fas fa-chevron-down"></i>
+                    </button>
+
+                    <!-- Amenities preview in overview -->
+                    <h3 class="amenities-section-title">Top Amenities</h3>
+                    <div class="amenities-grid">
+                        <div class="amenity-item"><i class="fas fa-wifi"></i> Free High-Speed WiFi</div>
+                        <div class="amenity-item"><i class="fas fa-swimming-pool"></i> Outdoor Swimming Pool</div>
+                        <div class="amenity-item"><i class="fas fa-spa"></i> Pearl Spa &amp; Wellness</div>
+                        <div class="amenity-item"><i class="fas fa-dumbbell"></i> 24-Hour Fitness Centre</div>
+                        <div class="amenity-item"><i class="fas fa-utensils"></i> 4 Restaurants &amp; Bars</div>
+                        <div class="amenity-item"><i class="fas fa-car"></i> Free Parking + Valet</div>
+                        <div class="amenity-item"><i class="fas fa-concierge-bell"></i> 24-Hour Room Service</div>
+                        <div class="amenity-item"><i class="fas fa-briefcase"></i> Business Centre</div>
+                        <div class="amenity-item"><i class="fas fa-plane"></i> Airport Transfer</div>
+                        <div class="amenity-item"><i class="fas fa-baby"></i> Childcare Services</div>
+                        <div class="amenity-item"><i class="fas fa-tshirt"></i> Laundry &amp; Dry Cleaning</div>
+                        <div class="amenity-item"><i class="fas fa-store"></i> Luxury Boutique</div>
+                    </div>
+                </div>
+
+                <!-- ---- ROOMS PANEL ---- -->
+                <div class="detail-panel" id="rooms">
+                    <div class="rooms-list">
+
+                        <article class="room-card">
+                            <div class="room-image">
+                                <img src="https://picsum.photos/seed/deluxe-room/400/300" alt="Deluxe Room" loading="lazy">
+                            </div>
+                            <div class="room-body">
+                                <div class="room-type-tag">Standard</div>
+                                <h3 class="room-name">Deluxe Room</h3>
+                                <p class="body-md" style="color:var(--on-surface-variant); margin-bottom:0.5rem;">40 m² · Garden or Pool View</p>
+                                <div class="room-features">
+                                    <span class="room-feature"><i class="fas fa-bed"></i>King Bed</span>
+                                    <span class="room-feature"><i class="fas fa-user-friends"></i>2 Guests</span>
+                                    <span class="room-feature"><i class="fas fa-wifi"></i>WiFi</span>
+                                    <span class="room-feature"><i class="fas fa-bath"></i>Bathtub</span>
+                                    <span class="room-feature"><i class="fas fa-coffee"></i>Minibar</span>
+                                </div>
+                            </div>
+                            <div class="room-pricing">
+                                <div class="room-price">
+                                    <span class="room-price-amount">PKR 25,000</span>
+                                    <span class="room-price-label">/night incl. taxes</span>
+                                </div>
+                                <div class="room-availability"><i class="fas fa-circle"></i>Only 3 Left</div>
+                                <button class="btn btn-primary btn-sm">Select Room</button>
+                            </div>
+                        </article>
+
+                        <article class="room-card">
+                            <div class="room-image">
+                                <img src="https://picsum.photos/seed/superior-room/400/300" alt="Superior Room" loading="lazy">
+                            </div>
+                            <div class="room-body">
+                                <div class="room-type-tag">Premium</div>
+                                <h3 class="room-name">Superior Room</h3>
+                                <p class="body-md" style="color:var(--on-surface-variant); margin-bottom:0.5rem;">52 m² · Mall Road View</p>
+                                <div class="room-features">
+                                    <span class="room-feature"><i class="fas fa-bed"></i>King Bed</span>
+                                    <span class="room-feature"><i class="fas fa-user-friends"></i>2 Guests</span>
+                                    <span class="room-feature"><i class="fas fa-wifi"></i>WiFi</span>
+                                    <span class="room-feature"><i class="fas fa-bath"></i>Jacuzzi</span>
+                                    <span class="room-feature"><i class="fas fa-glass-martini-alt"></i>Welcome Drink</span>
+                                </div>
+                            </div>
+                            <div class="room-pricing">
+                                <div class="room-price">
+                                    <span class="room-price-amount">PKR 35,000</span>
+                                    <span class="room-price-label">/night incl. taxes</span>
+                                </div>
+                                <div class="room-availability"><i class="fas fa-circle"></i>Available</div>
+                                <button class="btn btn-primary btn-sm">Select Room</button>
+                            </div>
+                        </article>
+
+                        <article class="room-card">
+                            <div class="room-image">
+                                <img src="https://picsum.photos/seed/executive-suite/400/300" alt="Executive Suite" loading="lazy">
+                            </div>
+                            <div class="room-body">
+                                <div class="room-type-tag">Suite</div>
+                                <h3 class="room-name">Executive Suite</h3>
+                                <p class="body-md" style="color:var(--on-surface-variant); margin-bottom:0.5rem;">90 m² · Panoramic City View</p>
+                                <div class="room-features">
+                                    <span class="room-feature"><i class="fas fa-bed"></i>King Bed + Living Room</span>
+                                    <span class="room-feature"><i class="fas fa-user-friends"></i>4 Guests</span>
+                                    <span class="room-feature"><i class="fas fa-couch"></i>Lounge Access</span>
+                                    <span class="room-feature"><i class="fas fa-concierge-bell"></i>Butler Service</span>
+                                </div>
+                            </div>
+                            <div class="room-pricing">
+                                <div class="room-price">
+                                    <span class="room-price-amount">PKR 75,000</span>
+                                    <span class="room-price-label">/night incl. taxes</span>
+                                </div>
+                                <div class="room-availability"><i class="fas fa-circle"></i>Available</div>
+                                <button class="btn btn-primary btn-sm">Select Room</button>
+                            </div>
+                        </article>
+
+                    </div>
+                </div>
+
+                <!-- ---- AMENITIES PANEL ---- -->
+                <div class="detail-panel" id="amenities-tab">
+                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:2rem;">
+                        <div>
+                            <h3 class="amenities-section-title">Dining</h3>
+                            <div class="amenities-grid" style="grid-template-columns:1fr;">
+                                <div class="amenity-item"><i class="fas fa-utensils"></i> Marco Polo (International)</div>
+                                <div class="amenity-item"><i class="fas fa-utensils"></i> Tai Pan (Chinese Fine Dining)</div>
+                                <div class="amenity-item"><i class="fas fa-coffee"></i> Polo Lounge (Tea &amp; Coffee)</div>
+                                <div class="amenity-item"><i class="fas fa-pizza-slice"></i> Layalpur Café (All-Day)</div>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="amenities-section-title">Wellness</h3>
+                            <div class="amenities-grid" style="grid-template-columns:1fr;">
+                                <div class="amenity-item"><i class="fas fa-spa"></i> Pearl Spa (Full Service)</div>
+                                <div class="amenity-item"><i class="fas fa-dumbbell"></i> 24-Hr Fitness Centre</div>
+                                <div class="amenity-item"><i class="fas fa-swimming-pool"></i> Outdoor Pool + Sundeck</div>
+                                <div class="amenity-item"><i class="fas fa-hot-tub"></i> Steam Room &amp; Sauna</div>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="amenities-section-title">Business</h3>
+                            <div class="amenities-grid" style="grid-template-columns:1fr;">
+                                <div class="amenity-item"><i class="fas fa-briefcase"></i> Business Centre</div>
+                                <div class="amenity-item"><i class="fas fa-chalkboard-teacher"></i> 8 Conference Rooms</div>
+                                <div class="amenity-item"><i class="fas fa-print"></i> Secretarial Services</div>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="amenities-section-title">Services</h3>
+                            <div class="amenities-grid" style="grid-template-columns:1fr;">
+                                <div class="amenity-item"><i class="fas fa-concierge-bell"></i> 24-Hr Concierge</div>
+                                <div class="amenity-item"><i class="fas fa-car"></i> Valet &amp; Parking</div>
+                                <div class="amenity-item"><i class="fas fa-plane"></i> Airport Transfer</div>
+                                <div class="amenity-item"><i class="fas fa-tshirt"></i> Laundry &amp; Dry Cleaning</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ---- REVIEWS PANEL ---- -->
+                <div class="detail-panel" id="reviews">
+                    <div class="reviews-summary">
+                        <div class="reviews-big-score">
+                            <span class="big-score-number">4.9</span>
+                            <div class="stars" style="justify-content:center; margin-top:0.5rem;">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                            <span class="big-score-label">Exceptional</span>
+                            <span class="big-score-count">1,247 verified reviews</span>
+                        </div>
+                        <div class="reviews-bars">
+                            <div class="review-bar-row">
+                                <span class="review-bar-label">Cleanliness</span>
+                                <div class="review-bar-track"><div class="review-bar-fill" style="width:98%"></div></div>
+                                <span class="review-bar-score">4.9</span>
+                            </div>
+                            <div class="review-bar-row">
+                                <span class="review-bar-label">Service</span>
+                                <div class="review-bar-track"><div class="review-bar-fill" style="width:96%"></div></div>
+                                <span class="review-bar-score">4.8</span>
+                            </div>
+                            <div class="review-bar-row">
+                                <span class="review-bar-label">Location</span>
+                                <div class="review-bar-track"><div class="review-bar-fill" style="width:100%"></div></div>
+                                <span class="review-bar-score">5.0</span>
+                            </div>
+                            <div class="review-bar-row">
+                                <span class="review-bar-label">Value</span>
+                                <div class="review-bar-track"><div class="review-bar-fill" style="width:92%"></div></div>
+                                <span class="review-bar-score">4.6</span>
+                            </div>
+                            <div class="review-bar-row">
+                                <span class="review-bar-label">Comfort</span>
+                                <div class="review-bar-track"><div class="review-bar-fill" style="width:96%"></div></div>
+                                <span class="review-bar-score">4.8</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="reviews-list">
+                        <div class="review-card">
+                            <div class="review-header">
+                                <div class="review-author">
+                                    <div class="review-avatar">AK</div>
+                                    <div>
+                                        <div class="review-name">Ayesha Khan</div>
+                                        <div class="review-date">November 2024 · Business Trip</div>
+                                    </div>
+                                </div>
+                                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            </div>
+                            <p class="review-text">The service was absolutely impeccable. Every staff member went out of their way to make sure our stay was perfect. The room was spotless, the bed was incredibly comfortable, and the breakfast at Marco Polo is unlike anything else in Lahore.</p>
+                            <div class="review-tags">
+                                <span class="review-tag">Excellent Service</span>
+                                <span class="review-tag">Great Breakfast</span>
+                                <span class="review-tag">Spotless Rooms</span>
+                            </div>
+                        </div>
+
+                        <div class="review-card">
+                            <div class="review-header">
+                                <div class="review-author">
+                                    <div class="review-avatar">MR</div>
+                                    <div>
+                                        <div class="review-name">Muhammad Rizwan</div>
+                                        <div class="review-date">October 2024 · Family Trip</div>
+                                    </div>
+                                </div>
+                                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            </div>
+                            <p class="review-text">Stayed for 4 nights with the family. Kids loved the pool. The location on Mall Road is perfect — walking distance from Lahore Museum, Anarkali, and the old city. The hotel's history adds something special to the experience. Will absolutely return.</p>
+                            <div class="review-tags">
+                                <span class="review-tag">Family-Friendly</span>
+                                <span class="review-tag">Great Location</span>
+                                <span class="review-tag">Pool</span>
+                            </div>
+                        </div>
+
+                        <div class="review-card">
+                            <div class="review-header">
+                                <div class="review-author">
+                                    <div class="review-avatar">ZH</div>
+                                    <div>
+                                        <div class="review-name">Zara Hussain</div>
+                                        <div class="review-date">September 2024 · Anniversary Stay</div>
+                                    </div>
+                                </div>
+                                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                            </div>
+                            <p class="review-text">Booked the Executive Suite for our anniversary and the hotel arranged a beautiful surprise — rose petals, candles, and a welcome card. Tai Pan for dinner was the best Chinese food I've ever had in Pakistan. A truly memorable stay.</p>
+                            <div class="review-tags">
+                                <span class="review-tag">Romantic</span>
+                                <span class="review-tag">Tai Pan Restaurant</span>
+                                <span class="review-tag">Special Occasions</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ---- LOCATION PANEL ---- -->
+                <div class="detail-panel" id="location-tab">
+                    <!-- Static map placeholder -->
+                    <div style="background: var(--surface-container); border-radius: var(--radius-lg); height: 300px; display:flex; align-items:center; justify-content:center; margin-bottom:1.5rem; position:relative; overflow:hidden;">
+                        <img src="https://picsum.photos/seed/lahore-map/900/300" alt="Map placeholder" style="width:100%; height:100%; object-fit:cover; opacity:0.4;">
+                        <div style="position:absolute; text-align:center;">
+                            <i class="fas fa-map-marker-alt" style="font-size:2.5rem; color:var(--primary); margin-bottom:0.75rem; display:block;"></i>
+                            <p style="font-family:'Newsreader',serif; font-size:var(--headline-sm); color:var(--on-surface);">The Mall Road, Lahore</p>
+                            <p style="font-size:var(--body-md); color:var(--on-surface-variant); margin-top:0.375rem;">Map integration coming soon</p>
+                        </div>
+                    </div>
+                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.5rem;">
+                        <div>
+                            <h3 class="amenities-section-title" style="margin-bottom:1rem;">Nearby Attractions</h3>
+                            <div style="display:flex; flex-direction:column; gap:0.75rem;">
+                                <div style="display:flex; justify-content:space-between; font-size:var(--body-md);">
+                                    <span><i class="fas fa-landmark" style="color:var(--tertiary); width:20px; margin-right:0.5rem;"></i>Lahore Museum</span>
+                                    <span style="color:var(--on-surface-variant);">5 min walk</span>
+                                </div>
+                                <div style="display:flex; justify-content:space-between; font-size:var(--body-md);">
+                                    <span><i class="fas fa-shopping-bag" style="color:var(--tertiary); width:20px; margin-right:0.5rem;"></i>Anarkali Bazaar</span>
+                                    <span style="color:var(--on-surface-variant);">10 min walk</span>
+                                </div>
+                                <div style="display:flex; justify-content:space-between; font-size:var(--body-md);">
+                                    <span><i class="fas fa-mosque" style="color:var(--tertiary); width:20px; margin-right:0.5rem;"></i>Badshahi Mosque</span>
+                                    <span style="color:var(--on-surface-variant);">15 min drive</span>
+                                </div>
+                                <div style="display:flex; justify-content:space-between; font-size:var(--body-md);">
+                                    <span><i class="fas fa-plane" style="color:var(--tertiary); width:20px; margin-right:0.5rem;"></i>Allama Iqbal Airport</span>
+                                    <span style="color:var(--on-surface-variant);">30 min drive</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="amenities-section-title" style="margin-bottom:1rem;">Getting Here</h3>
+                            <p class="body-md" style="color:var(--on-surface-variant); line-height:1.75;">
+                                Located on The Mall Road, Lahore's most iconic boulevard. Easily accessible by taxi, Uber, or private car. Airport transfer available through the hotel.
+                            </p>
+                            <a href="#" class="btn btn-secondary btn-sm" style="margin-top:1rem;">
+                                <i class="fas fa-directions"></i> Get Directions
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- /hotel-detail-main -->
+
+
+            <!-- ============================================================
+                 BOOKING SIDEBAR
+            ============================================================ -->
+            <aside class="booking-sidebar">
+                <div class="booking-card">
+                    <div class="booking-card-header">
+                        <div class="booking-price-display">PKR 25,000</div>
+                        <div class="booking-price-label">per night · taxes included</div>
+                    </div>
+                    <div class="booking-card-body">
+                        <form class="booking-form" id="bookingForm">
+
+                            <!-- Check-in & Check-out -->
+                            <div class="booking-dates-row">
+                                <div class="booking-field">
+                                    <label class="booking-label" for="bookingCheckIn">Check In</label>
+                                    <input type="date" class="booking-input" id="bookingCheckIn">
+                                </div>
+                                <div class="booking-field">
+                                    <label class="booking-label" for="bookingCheckOut">Check Out</label>
+                                    <input type="date" class="booking-input" id="bookingCheckOut">
+                                </div>
+                            </div>
+
+                            <!-- Room Type -->
+                            <div class="booking-field">
+                                <label class="booking-label" for="bookingRoom">Room Type</label>
+                                <select class="booking-input" id="bookingRoom">
+                                    <option value="deluxe">Deluxe Room — PKR 25,000</option>
+                                    <option value="superior">Superior Room — PKR 35,000</option>
+                                    <option value="suite">Executive Suite — PKR 75,000</option>
+                                </select>
+                            </div>
+
+                            <!-- Guests -->
+                            <div class="booking-field">
+                                <label class="booking-label">Guests</label>
+                                <div class="booking-guests-row">
+                                    <span style="font-size:var(--body-md); color:var(--on-surface-variant);">
+                                        <i class="fas fa-user" style="margin-right:0.5rem;"></i>Adults
+                                    </span>
+                                    <div class="booking-guests-ctrl">
+                                        <button type="button" class="booking-guests-btn" id="bookingGuestsDown">−</button>
+                                        <span class="booking-guests-count" id="bookingGuestsCount">2</span>
+                                        <button type="button" class="booking-guests-btn" id="bookingGuestsUp">+</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Price breakdown -->
+                            <div class="price-breakdown" id="priceBreakdown">
+                                <div class="price-row">
+                                    <span>PKR 25,000 × <span id="nightCount">1</span> nights</span>
+                                    <strong id="roomTotal">PKR 25,000</strong>
+                                </div>
+                                <div class="price-row">
+                                    <span>Service charge (10%)</span>
+                                    <strong id="serviceCharge">PKR 2,500</strong>
+                                </div>
+                                <div class="price-row">
+                                    <span><strong>Total</strong></span>
+                                    <strong id="grandTotal">PKR 27,500</strong>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="booking-submit">
+                                Reserve Now
+                            </button>
+
+                        </form>
+
+                        <p class="booking-note">
+                            <i class="fas fa-lock"></i> Free cancellation up to 48 hours before check-in
+                        </p>
+                    </div>
+                </div>
+            </aside>
+
+        </div>
+        <!-- /hotel-detail-layout -->
+
+    </div>
+</main>
+
+
+<!-- ================================================================
+     SIMILAR HOTELS SECTION
+================================================================ -->
+<section class="section similar-section">
+    <div class="container">
+        <div class="section-header">
+            <div>
+                <p class="section-eyebrow">You May Also Like</p>
+                <h2 class="section-title">Similar Properties<br>in Lahore</h2>
+            </div>
+            <a href="hotels.html" class="btn btn-ghost">All Lahore Hotels <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <div class="similar-grid">
+            <article class="hotel-card">
+                <div class="hotel-card-image">
+                    <img src="https://picsum.photos/seed/faletties-sim/600/400" alt="Faletti's Hotel" loading="lazy">
+                    <div class="hotel-card-badge"><i class="fas fa-star"></i> 4.5</div>
+                    <button class="hotel-wishlist"><i class="far fa-heart"></i></button>
+                </div>
+                <div class="hotel-card-body">
+                    <div class="hotel-card-meta">
+                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                        <span class="hotel-card-tag">Heritage</span>
+                    </div>
+                    <h3 class="hotel-card-title">Faletti's Hotel</h3>
+                    <p class="hotel-card-location"><i class="fas fa-map-marker-alt"></i>Egerton Road, Lahore</p>
+                    <p class="hotel-card-desc">Lahore's most storied hotel, established 1880.</p>
+                    <div class="hotel-card-footer">
+                        <div class="hotel-price">
+                            <span class="price-from">From</span>
+                            <span class="price-amount">PKR 16,000</span>
+                            <span class="price-night">/night</span>
+                        </div>
+                        <a href="hotel-details.html" class="btn btn-primary btn-sm">View</a>
+                    </div>
+                </div>
+            </article>
+            <article class="hotel-card">
+                <div class="hotel-card-image">
+                    <img src="https://picsum.photos/seed/avari-lhr/600/400" alt="Avari Hotel" loading="lazy">
+                    <div class="hotel-card-badge"><i class="fas fa-star"></i> 4.6</div>
+                    <button class="hotel-wishlist"><i class="far fa-heart"></i></button>
+                </div>
+                <div class="hotel-card-body">
+                    <div class="hotel-card-meta">
+                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                        <span class="hotel-card-tag">Luxury</span>
+                    </div>
+                    <h3 class="hotel-card-title">Avari Hotel Lahore</h3>
+                    <p class="hotel-card-location"><i class="fas fa-map-marker-alt"></i>87 The Mall, Lahore</p>
+                    <p class="hotel-card-desc">Sophisticated hotel on the Mall Road with award-winning cuisine.</p>
+                    <div class="hotel-card-footer">
+                        <div class="hotel-price">
+                            <span class="price-from">From</span>
+                            <span class="price-amount">PKR 20,000</span>
+                            <span class="price-night">/night</span>
+                        </div>
+                        <a href="hotel-details.html" class="btn btn-primary btn-sm">View</a>
+                    </div>
+                </div>
+            </article>
+            <article class="hotel-card">
+                <div class="hotel-card-image">
+                    <img src="https://picsum.photos/seed/hotel-one-sim/600/400" alt="Hotel One" loading="lazy">
+                    <div class="hotel-card-badge"><i class="fas fa-star"></i> 4.3</div>
+                    <button class="hotel-wishlist"><i class="far fa-heart"></i></button>
+                </div>
+                <div class="hotel-card-body">
+                    <div class="hotel-card-meta">
+                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
+                        <span class="hotel-card-tag">Mid-Range</span>
+                    </div>
+                    <h3 class="hotel-card-title">Hotel One Lahore</h3>
+                    <p class="hotel-card-location"><i class="fas fa-map-marker-alt"></i>Gulberg, Lahore</p>
+                    <p class="hotel-card-desc">Modern comfort in the heart of Lahore — great value.</p>
+                    <div class="hotel-card-footer">
+                        <div class="hotel-price">
+                            <span class="price-from">From</span>
+                            <span class="price-amount">PKR 10,000</span>
+                            <span class="price-night">/night</span>
+                        </div>
+                        <a href="hotel-details.html" class="btn btn-primary btn-sm">View</a>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="footer-logo">PakStay</div>
+                <p class="footer-tagline">Pakistan's premier hotel booking platform.</p>
+                <div class="footer-social">
+                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div>
+                <p class="footer-col-title">Explore</p>
+                <ul class="footer-links">
+                    <li><a href="hotels.html" class="footer-link">Search Hotels</a></li>
+                    <li><a href="hotels.html" class="footer-link">Luxury Hotels</a></li>
+                </ul>
+            </div>
+            <div>
+                <p class="footer-col-title">Company</p>
+                <ul class="footer-links">
+                    <li><a href="about.html"   class="footer-link">About PakStay</a></li>
+                    <li><a href="contact.html" class="footer-link">Contact Us</a></li>
+                </ul>
+            </div>
+            <div>
+                <p class="footer-col-title">Support</p>
+                <ul class="footer-links">
+                    <li><a href="#" class="footer-link">Help Centre</a></li>
+                    <li><a href="#" class="footer-link">Booking Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="footer-copy">&copy; 2024 PakStay. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<button class="scroll-top" id="scrollTop"><i class="fas fa-arrow-up"></i></button>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="js/main.js"></script>
+<script src="js/hotel-details.js"></script>
+</body>
+</html>

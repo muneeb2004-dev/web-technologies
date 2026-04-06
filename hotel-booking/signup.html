@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account — PakStay</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/auth.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+<div class="auth-page">
+
+    <!-- ---- LEFT: Visual Panel ---- -->
+    <div class="auth-visual">
+        <div class="auth-visual-bg" style="background-image:url('https://picsum.photos/seed/signup-visual/800/1080');"></div>
+        <div class="auth-visual-overlay"></div>
+
+        <a href="index.html" class="auth-logo">Pak<span>Stay</span></a>
+
+        <div class="auth-visual-content">
+            <h2 class="auth-visual-headline">
+                Join Pakistan's<br>Premier Hotel<br><em>Community</em>
+            </h2>
+            <p class="auth-visual-sub">
+                Create a free account to save your favourite hotels, manage bookings, and unlock exclusive member rates.
+            </p>
+            <!-- 3 micro-benefit points -->
+            <div style="display:flex; flex-direction:column; gap:1rem; margin-bottom:2rem;">
+                <div style="display:flex; align-items:center; gap:0.875rem; color:rgba(255,255,255,0.80);">
+                    <div style="width:32px; height:32px; background:rgba(255,255,255,0.12); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                        <i class="fas fa-bookmark" style="font-size:0.75rem;"></i>
+                    </div>
+                    <span style="font-size:var(--body-md);">Save and compare your favourite properties</span>
+                </div>
+                <div style="display:flex; align-items:center; gap:0.875rem; color:rgba(255,255,255,0.80);">
+                    <div style="width:32px; height:32px; background:rgba(255,255,255,0.12); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                        <i class="fas fa-tags" style="font-size:0.75rem;"></i>
+                    </div>
+                    <span style="font-size:var(--body-md);">Access exclusive member-only rates</span>
+                </div>
+                <div style="display:flex; align-items:center; gap:0.875rem; color:rgba(255,255,255,0.80);">
+                    <div style="width:32px; height:32px; background:rgba(255,255,255,0.12); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                        <i class="fas fa-history" style="font-size:0.75rem;"></i>
+                    </div>
+                    <span style="font-size:var(--body-md);">View and manage all your bookings</span>
+                </div>
+            </div>
+            <div class="auth-visual-quote">
+                <p>"Joining PakStay was the best decision for our travels. The exclusive deals and personalised recommendations are outstanding."</p>
+                <cite>— Muhammad Raza, Islamabad</cite>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ---- RIGHT: Form Panel ---- -->
+    <div class="auth-form-panel">
+        <div class="auth-form-inner">
+
+            <!-- Mobile logo -->
+            <a href="index.html" style="display:block; margin-bottom:2.5rem;">
+                <span style="font-family:'Newsreader',serif; font-size:1.75rem; font-weight:600; color:var(--primary); letter-spacing:-0.03em;">PakStay</span>
+            </a>
+
+            <p class="auth-form-eyebrow">Get Started</p>
+            <h1 class="auth-form-title">Create Your<br>Account</h1>
+            <p class="auth-form-subtitle">
+                Already have an account? <a href="login.html">Sign in instead</a>
+            </p>
+
+            <!-- ---- Signup Form ---- -->
+            <form class="auth-form" id="signupForm" novalidate>
+
+                <!-- First + Last Name -->
+                <div class="auth-field-row">
+                    <div class="form-group">
+                        <label class="form-label" for="firstName">First Name</label>
+                        <div class="auth-input-wrap">
+                            <i class="fas fa-user auth-input-icon"></i>
+                            <input type="text" class="form-input" id="firstName" name="firstName" placeholder="Ahmed" autocomplete="given-name">
+                        </div>
+                        <span class="form-error" id="firstNameError">First name is required.</span>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="lastName">Last Name</label>
+                        <div class="auth-input-wrap">
+                            <i class="fas fa-user auth-input-icon"></i>
+                            <input type="text" class="form-input" id="lastName" name="lastName" placeholder="Khan" autocomplete="family-name">
+                        </div>
+                        <span class="form-error" id="lastNameError">Last name is required.</span>
+                    </div>
+                </div>
+
+                <!-- Email -->
+                <div class="form-group">
+                    <label class="form-label" for="signupEmail">Email Address</label>
+                    <div class="auth-input-wrap">
+                        <i class="fas fa-envelope auth-input-icon"></i>
+                        <input type="email" class="form-input" id="signupEmail" name="email" placeholder="you@example.com" autocomplete="email">
+                    </div>
+                    <span class="form-error" id="signupEmailError">Please enter a valid email address.</span>
+                </div>
+
+                <!-- Phone -->
+                <div class="form-group">
+                    <label class="form-label" for="signupPhone">Phone Number</label>
+                    <div class="auth-input-wrap">
+                        <i class="fas fa-phone auth-input-icon"></i>
+                        <input type="tel" class="form-input" id="signupPhone" name="phone" placeholder="+92 300 0000000" autocomplete="tel">
+                    </div>
+                    <span class="form-error" id="signupPhoneError">Please enter a valid Pakistani phone number.</span>
+                </div>
+
+                <!-- Password -->
+                <div class="form-group">
+                    <label class="form-label" for="signupPassword">Password</label>
+                    <div class="auth-input-wrap">
+                        <i class="fas fa-lock auth-input-icon"></i>
+                        <input type="password" class="form-input" id="signupPassword" name="password" placeholder="Create a strong password" autocomplete="new-password">
+                        <button type="button" class="auth-input-toggle" id="toggleSignupPassword">
+                            <i class="fas fa-eye" id="toggleSignupIcon"></i>
+                        </button>
+                    </div>
+                    <!-- Password strength indicator -->
+                    <div class="password-strength" id="passwordStrength">
+                        <div class="strength-bar">
+                            <div class="strength-segment" id="seg1"></div>
+                            <div class="strength-segment" id="seg2"></div>
+                            <div class="strength-segment" id="seg3"></div>
+                            <div class="strength-segment" id="seg4"></div>
+                        </div>
+                        <span class="strength-label" id="strengthLabel">Weak</span>
+                    </div>
+                    <span class="form-error" id="signupPasswordError">Password must be at least 8 characters.</span>
+                </div>
+
+                <!-- Confirm Password -->
+                <div class="form-group">
+                    <label class="form-label" for="confirmPassword">Confirm Password</label>
+                    <div class="auth-input-wrap">
+                        <i class="fas fa-lock auth-input-icon"></i>
+                        <input type="password" class="form-input" id="confirmPassword" name="confirmPassword" placeholder="Repeat your password" autocomplete="new-password">
+                        <button type="button" class="auth-input-toggle" id="toggleConfirmPassword">
+                            <i class="fas fa-eye" id="toggleConfirmIcon"></i>
+                        </button>
+                    </div>
+                    <span class="form-error" id="confirmPasswordError">Passwords do not match.</span>
+                </div>
+
+                <!-- Account type (user / hotel owner) -->
+                <div class="form-group">
+                    <label class="form-label">Account Type</label>
+                    <div style="display:flex; gap:1rem;">
+                        <label style="flex:1; cursor:pointer;" id="typeUserLabel">
+                            <input type="radio" name="accountType" value="user" id="typeUser" checked style="display:none;">
+                            <div class="account-type-btn active" id="typeUserBtn" style="padding:0.875rem; border-radius:var(--radius-md); background:var(--surface-low); border-bottom:2px solid var(--outline-variant); text-align:center; transition:all var(--transition-fast);">
+                                <i class="fas fa-user" style="margin-bottom:0.375rem; display:block; color:var(--primary);"></i>
+                                <span style="font-size:var(--body-md); font-weight:600;">Guest</span>
+                                <div style="font-size:var(--label-md); color:var(--on-surface-variant); margin-top:0.2rem;">Search &amp; book hotels</div>
+                            </div>
+                        </label>
+                        <label style="flex:1; cursor:pointer;" id="typeOwnerLabel">
+                            <input type="radio" name="accountType" value="owner" id="typeOwner" style="display:none;">
+                            <div class="account-type-btn" id="typeOwnerBtn" style="padding:0.875rem; border-radius:var(--radius-md); background:var(--surface-low); border-bottom:2px solid var(--outline-variant); text-align:center; transition:all var(--transition-fast);">
+                                <i class="fas fa-hotel" style="margin-bottom:0.375rem; display:block; color:var(--secondary);"></i>
+                                <span style="font-size:var(--body-md); font-weight:600;">Hotel Owner</span>
+                                <div style="font-size:var(--label-md); color:var(--on-surface-variant); margin-top:0.2rem;">List &amp; manage properties</div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Terms & Privacy -->
+                <label class="auth-checkbox" style="margin-top:0.25rem;">
+                    <input type="checkbox" id="agreeTerms">
+                    <span class="auth-checkbox-box"><i class="fas fa-check"></i></span>
+                    <span style="font-size:var(--body-md);">I agree to the <a href="#" style="color:var(--primary); font-weight:600;">Terms of Service</a> and <a href="#" style="color:var(--primary); font-weight:600;">Privacy Policy</a></span>
+                </label>
+                <span class="form-error" id="termsError">You must agree to the terms to continue.</span>
+
+                <!-- Submit -->
+                <button type="submit" class="auth-submit" id="signupSubmit">
+                    Create Account
+                </button>
+
+            </form>
+
+            <!-- Divider -->
+            <div class="auth-divider">or sign up with</div>
+
+            <!-- Social Auth -->
+            <div class="auth-social">
+                <button class="social-auth-btn" id="googleSignup">
+                    <i class="fab fa-google"></i>
+                    Continue with Google
+                </button>
+                <button class="social-auth-btn" id="facebookSignup">
+                    <i class="fab fa-facebook-f"></i>
+                    Continue with Facebook
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="js/auth.js"></script>
+</body>
+</html>

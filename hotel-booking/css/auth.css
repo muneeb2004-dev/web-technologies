@@ -1,0 +1,399 @@
+/* ================================================================
+   PAKSTAY — AUTH PAGES  (auth.css)
+   Covers: login.html and signup.html
+   Both use a split layout: image panel left, form right
+================================================================ */
+
+
+/* ================================================================
+   AUTH LAYOUT — Full-screen split
+================================================================ */
+html, body { height: 100%; }
+
+.auth-page {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+/* ---- Left: Visual Panel ---- */
+.auth-visual {
+    position: relative;
+    background: var(--gradient-primary);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 3rem;
+    overflow: hidden;
+    min-height: 100vh;
+}
+
+/* Background image */
+.auth-visual-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('https://picsum.photos/seed/auth-visual/800/1080');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.35;
+}
+
+/* Gradient overlay over the image */
+.auth-visual-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to top,
+        rgba(29, 28, 16, 0.92) 0%,
+        rgba(45, 82, 53, 0.75) 50%,
+        rgba(45, 82, 53, 0.55) 100%
+    );
+}
+
+/* Content above bg and overlay */
+.auth-visual-content {
+    position: relative;
+    z-index: 2;
+}
+
+/* Logo in visual panel */
+.auth-logo {
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 2rem;
+    font-weight: 600;
+    color: white;
+    letter-spacing: -0.03em;
+    margin-bottom: auto;
+    position: absolute;
+    top: 3rem;
+    left: 3rem;
+}
+.auth-logo span { opacity: 0.6; }
+
+.auth-visual-headline {
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: clamp(1.875rem, 2.5vw, var(--display-sm));
+    font-weight: 400;
+    color: white;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+}
+.auth-visual-headline em { font-style: italic; color: var(--secondary-container); }
+
+.auth-visual-sub {
+    font-size: var(--body-md);
+    color: rgba(255, 255, 255, 0.65);
+    line-height: 1.75;
+    max-width: 38ch;
+    margin-bottom: 2rem;
+}
+
+/* Testimonial quote on visual panel */
+.auth-visual-quote {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-left: 3px solid var(--secondary-container);
+    padding: 1.25rem 1.5rem;
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+}
+.auth-visual-quote p {
+    font-size: var(--body-md);
+    color: rgba(255, 255, 255, 0.80);
+    font-style: italic;
+    line-height: 1.7;
+    margin-bottom: 0.75rem;
+}
+.auth-visual-quote cite {
+    font-size: var(--label-md);
+    color: rgba(255,255,255,0.50);
+    font-style: normal;
+    font-weight: 600;
+}
+
+
+/* ---- Right: Form Panel ---- */
+.auth-form-panel {
+    background: var(--surface);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 3rem 4rem;
+    overflow-y: auto;
+}
+
+.auth-form-inner { max-width: 420px; width: 100%; margin: 0 auto; }
+
+.auth-form-eyebrow {
+    font-size: var(--label-lg);
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--secondary);
+    margin-bottom: 0.625rem;
+}
+
+.auth-form-title {
+    font-family: 'Newsreader', serif;
+    font-size: clamp(1.75rem, 2.5vw, var(--headline-lg));
+    font-weight: 400;
+    color: var(--on-surface);
+    letter-spacing: -0.02em;
+    margin-bottom: 0.625rem;
+    line-height: 1.2;
+}
+
+.auth-form-subtitle {
+    font-size: var(--body-md);
+    color: var(--on-surface-variant);
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+}
+
+.auth-form-subtitle a {
+    color: var(--primary);
+    font-weight: 700;
+}
+.auth-form-subtitle a:hover { text-decoration: underline; }
+
+
+/* ================================================================
+   FORM FIELDS (extends style.css form system)
+================================================================ */
+.auth-form { display: flex; flex-direction: column; gap: 1.375rem; }
+
+/* Name fields in a row (signup) */
+.auth-field-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+/* Input with icon */
+.auth-input-wrap {
+    position: relative;
+}
+
+.auth-input-icon {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--secondary);
+    font-size: 0.875rem;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.auth-input-wrap .form-input {
+    padding-left: 2.75rem;
+}
+
+/* Password toggle eye icon */
+.auth-input-toggle {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--on-surface-variant);
+    font-size: 0.875rem;
+    cursor: pointer;
+    background: none;
+    border: none;
+    z-index: 2;
+    transition: color var(--transition-fast);
+}
+.auth-input-toggle:hover { color: var(--primary); }
+
+
+/* ================================================================
+   HELPERS — Remember me / Forgot password row
+================================================================ */
+.auth-helpers {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+/* Custom checkbox */
+.auth-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    cursor: pointer;
+    font-size: var(--body-md);
+    color: var(--on-surface-variant);
+    user-select: none;
+}
+.auth-checkbox input[type="checkbox"] { display: none; }
+
+.auth-checkbox-box {
+    width: 18px; height: 18px;
+    border-radius: var(--radius-xs);
+    border: 2px solid var(--outline-variant);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all var(--transition-fast);
+    font-size: 0.6rem;
+    color: transparent;
+}
+.auth-checkbox input:checked ~ .auth-checkbox-box {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: white;
+}
+
+.auth-forgot {
+    font-size: var(--body-md);
+    font-weight: 600;
+    color: var(--primary);
+    transition: opacity var(--transition-fast);
+}
+.auth-forgot:hover { opacity: 0.75; }
+
+
+/* ================================================================
+   SUBMIT BUTTON
+================================================================ */
+.auth-submit {
+    width: 100%;
+    padding: 1rem;
+    font-size: var(--body-lg);
+    font-weight: 700;
+    background: var(--gradient-primary);
+    color: white;
+    border: none;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all var(--transition-base);
+    margin-top: 0.5rem;
+}
+.auth-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    filter: brightness(1.06);
+}
+.auth-submit:active { transform: translateY(0); }
+
+
+/* ================================================================
+   DIVIDER
+================================================================ */
+.auth-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: var(--on-surface-variant);
+    font-size: var(--label-md);
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-block: 0.5rem;
+}
+.auth-divider::before,
+.auth-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--outline-variant);
+}
+
+
+/* ================================================================
+   SOCIAL AUTH BUTTONS
+================================================================ */
+.auth-social { display: flex; flex-direction: column; gap: 0.75rem; }
+
+.social-auth-btn {
+    width: 100%;
+    padding: 0.875rem 1.5rem;
+    border-radius: var(--radius-md);
+    font-size: var(--body-md);
+    font-weight: 600;
+    color: var(--on-surface);
+    background: var(--surface-lowest);
+    border: 1px solid var(--outline-variant);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.875rem;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+.social-auth-btn:hover {
+    background: var(--surface-low);
+    border-color: var(--secondary);
+    transform: translateY(-1px);
+}
+.social-auth-btn i { font-size: 1.125rem; }
+.fa-google { color: #DB4437; }
+.fa-facebook-f { color: #1877F2; }
+
+
+/* ================================================================
+   TERMS TEXT (signup)
+================================================================ */
+.auth-terms {
+    font-size: var(--label-md);
+    color: var(--on-surface-variant);
+    line-height: 1.6;
+    text-align: center;
+    margin-top: 0.5rem;
+}
+.auth-terms a { color: var(--primary); font-weight: 600; }
+.auth-terms a:hover { text-decoration: underline; }
+
+
+/* ================================================================
+   STRENGTH INDICATOR (password)
+================================================================ */
+.password-strength {
+    margin-top: 0.5rem;
+    display: none;
+}
+.password-strength.visible { display: block; }
+
+.strength-bar {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 0.375rem;
+}
+.strength-segment {
+    flex: 1;
+    height: 3px;
+    border-radius: var(--radius-full);
+    background: var(--outline-variant);
+    transition: background var(--transition-fast);
+}
+.strength-segment.weak   { background: var(--tertiary); }
+.strength-segment.medium { background: #c9a227; }
+.strength-segment.strong { background: var(--primary); }
+
+.strength-label {
+    font-size: var(--label-md);
+    font-weight: 600;
+    color: var(--on-surface-variant);
+}
+.strength-label.weak   { color: var(--tertiary); }
+.strength-label.medium { color: #c9a227; }
+.strength-label.strong { color: var(--primary); }
+
+
+/* ================================================================
+   RESPONSIVE
+================================================================ */
+@media (max-width: 1024px) {
+    .auth-form-panel { padding: 3rem 2.5rem; }
+}
+
+@media (max-width: 768px) {
+    .auth-page { grid-template-columns: 1fr; }
+    .auth-visual { display: none; }
+    .auth-form-panel { padding: 5rem 1.5rem 3rem; min-height: 100vh; }
+    .auth-form-inner { max-width: 100%; }
+    .auth-field-row { grid-template-columns: 1fr; }
+}

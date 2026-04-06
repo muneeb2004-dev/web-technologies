@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us — PakStay</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/pages.css">
+    <link rel="stylesheet" href="css/hotels.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+<nav class="navbar solid" id="navbar">
+    <div class="container">
+        <div class="navbar-inner">
+            <a href="index.html" class="navbar-logo">Pak<span>Stay</span></a>
+            <ul class="navbar-nav">
+                <li><a href="index.html"  class="nav-link">Home</a></li>
+                <li><a href="hotels.html" class="nav-link">Hotels</a></li>
+                <li><a href="about.html"  class="nav-link">About</a></li>
+                <li><a href="contact.html" class="nav-link active">Contact</a></li>
+            </ul>
+            <div class="navbar-actions">
+                <a href="login.html"  class="navbar-btn-login">Sign In</a>
+                <a href="signup.html" class="navbar-btn-signup">Register</a>
+            </div>
+            <button class="navbar-hamburger" id="hamburgerBtn">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+        </div>
+    </div>
+</nav>
+
+<div class="navbar-mobile" id="mobileMenu">
+    <button class="mobile-close" id="mobileClose">&times;</button>
+    <ul>
+        <li><a href="index.html"  class="mobile-nav-link">Home</a></li>
+        <li><a href="hotels.html" class="mobile-nav-link">Hotels</a></li>
+        <li><a href="about.html"  class="mobile-nav-link">About</a></li>
+        <li><a href="contact.html" class="mobile-nav-link">Contact</a></li>
+    </ul>
+    <div class="mobile-auth">
+        <a href="login.html"  class="btn btn-secondary">Sign In</a>
+        <a href="signup.html" class="btn btn-primary">Register</a>
+    </div>
+</div>
+
+
+<!-- Page Header -->
+<header class="page-header">
+    <div class="container">
+        <div class="page-header-inner">
+            <div class="page-breadcrumb">
+                <a href="index.html" style="color:rgba(255,255,255,0.55);">Home</a>
+                <span class="breadcrumb-sep">/</span>
+                <span class="breadcrumb-current">Contact</span>
+            </div>
+            <h1 class="page-title">We'd Love to Hear from You</h1>
+            <p class="page-subtitle">Questions, feedback, or want to list your hotel? We respond within 24 hours.</p>
+        </div>
+    </div>
+</header>
+
+
+<!-- ================================================================
+     CONTACT FORM + INFO
+================================================================ -->
+<main>
+    <div class="container">
+        <div class="contact-layout">
+
+            <!-- ---- Contact Form ---- -->
+            <div class="contact-form-section">
+                <p class="section-eyebrow">Send a Message</p>
+                <h2 class="contact-form-title">Get in Touch<br>with Our Team</h2>
+                <p class="contact-form-sub">
+                    Whether you have a question about a booking, want to list your hotel, or just want to share feedback — we're here.
+                </p>
+
+                <!-- The form itself -->
+                <form class="contact-form" id="contactForm" novalidate>
+
+                    <!-- Name row -->
+                    <div class="contact-field-row">
+                        <div class="form-group">
+                            <label class="form-label" for="contactFirstName">First Name</label>
+                            <input type="text" class="form-input" id="contactFirstName" placeholder="Ahmed" required>
+                            <span class="form-error" id="cfNameError">Please enter your first name.</span>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="contactLastName">Last Name</label>
+                            <input type="text" class="form-input" id="contactLastName" placeholder="Khan" required>
+                        </div>
+                    </div>
+
+                    <!-- Email + Phone -->
+                    <div class="contact-field-row">
+                        <div class="form-group">
+                            <label class="form-label" for="contactEmail">Email Address</label>
+                            <input type="email" class="form-input" id="contactEmail" placeholder="you@example.com" required>
+                            <span class="form-error" id="cfEmailError">Please enter a valid email.</span>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="contactPhone">Phone (optional)</label>
+                            <input type="tel" class="form-input" id="contactPhone" placeholder="+92 300 0000000">
+                        </div>
+                    </div>
+
+                    <!-- Subject -->
+                    <div class="form-group">
+                        <label class="form-label" for="contactSubject">Subject</label>
+                        <select class="contact-subject-select form-input" id="contactSubject" required>
+                            <option value="">Select a topic…</option>
+                            <option value="booking">Booking Enquiry</option>
+                            <option value="list">List My Hotel</option>
+                            <option value="support">Guest Support</option>
+                            <option value="feedback">Feedback</option>
+                            <option value="partnership">Partnership</option>
+                            <option value="other">Other</option>
+                        </select>
+                        <span class="form-error" id="cfSubjectError">Please select a subject.</span>
+                    </div>
+
+                    <!-- Message -->
+                    <div class="form-group">
+                        <label class="form-label" for="contactMessage">Message</label>
+                        <textarea
+                            class="contact-textarea"
+                            id="contactMessage"
+                            placeholder="Tell us how we can help…"
+                            required
+                        ></textarea>
+                        <span class="form-error" id="cfMessageError">Please write a message.</span>
+                    </div>
+
+                    <!-- Submit -->
+                    <button type="submit" class="contact-submit" id="contactSubmit">
+                        <i class="fas fa-paper-plane"></i>
+                        Send Message
+                    </button>
+
+                </form>
+
+                <!-- Success message — hidden until form submits -->
+                <div class="contact-success" id="contactSuccess">
+                    <div class="contact-success-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3>Message Sent Successfully!</h3>
+                    <p>Thank you for reaching out. Our team will get back to you within 24 hours at the email address you provided.</p>
+                    <button class="btn btn-secondary btn-sm" id="contactReset" style="margin-top:1.5rem;">Send Another Message</button>
+                </div>
+            </div>
+
+
+            <!-- ---- Contact Info Panel ---- -->
+            <aside class="contact-info-section">
+                <h2 class="contact-info-title">Contact Information</h2>
+                <p class="contact-info-sub">Our team is available Monday–Saturday, 9am–9pm Pakistan Standard Time.</p>
+
+                <div class="contact-info-list">
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon"><i class="fas fa-envelope"></i></div>
+                        <div>
+                            <div class="contact-info-label">Email</div>
+                            <div class="contact-info-value">hello@pakstay.com</div>
+                            <div class="contact-info-note">For general enquiries</div>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon"><i class="fas fa-headset"></i></div>
+                        <div>
+                            <div class="contact-info-label">Guest Support</div>
+                            <div class="contact-info-value">support@pakstay.com</div>
+                            <div class="contact-info-note">Booking issues &amp; changes</div>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon"><i class="fas fa-hotel"></i></div>
+                        <div>
+                            <div class="contact-info-label">Hotel Owners</div>
+                            <div class="contact-info-value">list@pakstay.com</div>
+                            <div class="contact-info-note">List your property on PakStay</div>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon"><i class="fas fa-phone"></i></div>
+                        <div>
+                            <div class="contact-info-label">Phone</div>
+                            <div class="contact-info-value">+92 51 000 0000</div>
+                            <div class="contact-info-note">Mon–Sat, 9am–9pm PST</div>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div>
+                            <div class="contact-info-label">Office</div>
+                            <div class="contact-info-value">F-7 Markaz, Islamabad</div>
+                            <div class="contact-info-note">Pakistan</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Social Links -->
+                <p class="contact-info-label" style="margin-bottom:0.875rem;">Follow Us</p>
+                <div class="contact-social">
+                    <a href="#" class="contact-social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="contact-social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="contact-social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="contact-social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="contact-social-link" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                </div>
+
+                <!-- Response time badge -->
+                <div style="margin-top:2rem; background:var(--secondary-container); border-radius:var(--radius-md); padding:1.25rem; display:flex; align-items:center; gap:0.875rem;">
+                    <div style="width:36px; height:36px; background:var(--primary); color:white; border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                        <i class="fas fa-clock" style="font-size:0.875rem;"></i>
+                    </div>
+                    <div>
+                        <div style="font-weight:700; font-size:var(--body-md); color:var(--on-surface);">Average Response: &lt;4 Hours</div>
+                        <div style="font-size:var(--label-md); color:var(--on-surface-variant);">During business hours</div>
+                    </div>
+                </div>
+            </aside>
+
+        </div>
+    </div>
+</main>
+
+
+<!-- ================================================================
+     FAQ SECTION
+================================================================ -->
+<section class="section faq-section">
+    <div class="container">
+        <div class="section-header" style="flex-direction:column; align-items:center; text-align:center; margin-bottom:3rem;">
+            <p class="section-eyebrow">FAQ</p>
+            <h2 class="section-title">Frequently Asked Questions</h2>
+        </div>
+
+        <div class="faq-list" id="faqList">
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    How do I make a booking on PakStay?
+                    <i class="fas fa-plus faq-icon"></i>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        Search for your destination and dates on our homepage, browse the results, and click "View Hotel" on the property you like. On the hotel details page, select your room type, enter your dates and guests, and click "Reserve Now." You'll receive a confirmation email immediately.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    What is your cancellation policy?
+                    <i class="fas fa-plus faq-icon"></i>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        Most of our properties offer free cancellation up to 48 hours before check-in. The exact policy is shown on each hotel's page before you complete your booking. Some special rate rooms have stricter policies — these are always clearly marked.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    How do I list my hotel on PakStay?
+                    <i class="fas fa-plus faq-icon"></i>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        Register for a Hotel Owner account on our signup page, then submit your property details. Our quality assurance team will review your submission and arrange an in-person visit. Once approved, your property will be live within 7 business days. Listing is free to start. Email list@pakstay.com for more information.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    Is it safe to pay through PakStay?
+                    <i class="fas fa-plus faq-icon"></i>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        Yes. PakStay uses industry-standard SSL encryption for all transactions. We accept major credit/debit cards and JazzCash. Your payment details are never stored on our servers — they are processed securely by our payment partners. Your reservation is guaranteed upon payment.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    Can I modify my booking after confirming?
+                    <i class="fas fa-plus faq-icon"></i>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        Yes — most bookings can be modified (dates, room type, number of guests) through your account dashboard before the free cancellation deadline. If you need to make changes after the deadline, please contact our support team at support@pakstay.com and we'll do our best to accommodate.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    How does PakStay verify hotels?
+                    <i class="fas fa-plus faq-icon"></i>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        Every hotel listed on PakStay is personally visited by a member of our quality team before going live. We check that the facilities, rooms, and service levels match what the hotel claims. We also monitor guest reviews post-stay and take action — including delisting — if standards aren't maintained.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- /faq-list -->
+    </div>
+</section>
+
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="footer-logo">PakStay</div>
+                <p class="footer-tagline">Pakistan's premier hotel booking platform.</p>
+                <div class="footer-social">
+                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div>
+                <p class="footer-col-title">Explore</p>
+                <ul class="footer-links">
+                    <li><a href="hotels.html" class="footer-link">Search Hotels</a></li>
+                </ul>
+            </div>
+            <div>
+                <p class="footer-col-title">Company</p>
+                <ul class="footer-links">
+                    <li><a href="about.html"   class="footer-link">About PakStay</a></li>
+                    <li><a href="contact.html" class="footer-link">Contact Us</a></li>
+                </ul>
+            </div>
+            <div>
+                <p class="footer-col-title">Support</p>
+                <ul class="footer-links">
+                    <li><a href="#" class="footer-link">Help Centre</a></li>
+                    <li><a href="#" class="footer-link">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="footer-copy">&copy; 2024 PakStay. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<button class="scroll-top" id="scrollTop"><i class="fas fa-arrow-up"></i></button>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="js/main.js"></script>
+<script src="js/contact.js"></script>
+</body>
+</html>
