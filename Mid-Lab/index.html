@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="PakStay — Pakistan's premier hotel booking platform. Discover and book premium hotels from Hunza to Karachi.">
+    <title>PakStay — Discover Pakistan's Finest Hotels</title>
+
+    <!-- Google Fonts are loaded via style.css @import -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/home.css">
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+<!-- ================================================================
+     NAVBAR — Fixed, starts transparent, turns glass on scroll
+================================================================ -->
+<nav class="navbar transparent" id="navbar">
+    <div class="container">
+        <div class="navbar-inner">
+
+            <!-- Logo -->
+            <a href="index.html" class="navbar-logo">Pak<span>Stay</span></a>
+
+            <!-- Desktop Navigation Links -->
+            <ul class="navbar-nav">
+                <li><a href="index.html"       class="nav-link active">Home</a></li>
+                <li><a href="hotels.html"       class="nav-link">Hotels</a></li>
+                <li><a href="about.html"        class="nav-link">About</a></li>
+                <li><a href="contact.html"      class="nav-link">Contact</a></li>
+            </ul>
+
+            <!-- Auth Buttons -->
+            <div class="navbar-actions">
+                <a href="login.html"  class="navbar-btn-login">Sign In</a>
+                <a href="signup.html" class="navbar-btn-signup">Register</a>
+            </div>
+
+            <!-- Hamburger for Mobile -->
+            <button class="navbar-hamburger" id="hamburgerBtn" aria-label="Open navigation menu">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+
+        </div>
+    </div>
+</nav>
+
+<!-- Mobile Full-Screen Menu Overlay -->
+<div class="navbar-mobile" id="mobileMenu" aria-hidden="true">
+    <button class="mobile-close" id="mobileClose" aria-label="Close menu">&times;</button>
+    <ul>
+        <li><a href="index.html"  class="mobile-nav-link">Home</a></li>
+        <li><a href="hotels.html" class="mobile-nav-link">Hotels</a></li>
+        <li><a href="about.html"  class="mobile-nav-link">About</a></li>
+        <li><a href="contact.html" class="mobile-nav-link">Contact</a></li>
+    </ul>
+    <div class="mobile-divider"></div>
+    <div class="mobile-auth">
+        <a href="login.html"  class="btn btn-secondary">Sign In</a>
+        <a href="signup.html" class="btn btn-primary">Register</a>
+    </div>
+</div>
+
+
+<!-- ================================================================
+     HERO SECTION
+================================================================ -->
+<section class="hero" id="hero">
+
+    <!-- Background Image Layer -->
+    <div class="hero-bg" id="heroBg"></div>
+
+    <!-- Dark Gradient Overlay -->
+    <div class="hero-overlay"></div>
+
+    <div class="container">
+        <div class="hero-content">
+
+            <!-- Top pill label -->
+            <div class="hero-label">
+                <span>✦</span>
+                <span>Pakistan's Premier Hotel Platform</span>
+            </div>
+
+            <!-- Main Headline — Newsreader serif, italic for "Finest" -->
+            <h1 class="hero-headline display-lg">
+                Discover Pakistan's<br>
+                <em>Finest Hotels</em>
+            </h1>
+
+            <!-- Subtitle -->
+            <p class="hero-sub body-lg">
+                From the peaks of Hunza to the shores of Karachi, find<br class="hide-mobile">
+                premium stays curated for the discerning traveller.
+            </p>
+
+            <!-- ---- SEARCH CARD ---- -->
+            <div class="search-card" id="searchCard">
+
+                <!-- Property type tabs -->
+                <div class="search-tabs">
+                    <button class="search-tab active" data-tab="hotels">Hotels</button>
+                    <button class="search-tab" data-tab="resorts">Resorts</button>
+                    <button class="search-tab" data-tab="guesthouses">Guesthouses</button>
+                </div>
+
+                <form class="search-form" id="searchForm">
+
+                    <!-- Destination -->
+                    <div class="search-field">
+                        <div class="search-field-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="search-field-content">
+                            <label class="search-label" for="destinationInput">Destination</label>
+                            <select class="search-input" id="destinationInput">
+                                <option value="">Where are you going?</option>
+                                <option value="islamabad">Islamabad</option>
+                                <option value="lahore">Lahore</option>
+                                <option value="karachi">Karachi</option>
+                                <option value="murree">Murree</option>
+                                <option value="hunza">Hunza Valley</option>
+                                <option value="swat">Swat Valley</option>
+                                <option value="skardu">Skardu</option>
+                                <option value="nathiagali">Nathiagali</option>
+                                <option value="peshawar">Peshawar</option>
+                                <option value="quetta">Quetta</option>
+                                <option value="gilgit">Gilgit</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="search-divider"></div>
+
+                    <!-- Check-In Date -->
+                    <div class="search-field">
+                        <div class="search-field-icon">
+                            <i class="fas fa-calendar"></i>
+                        </div>
+                        <div class="search-field-content">
+                            <label class="search-label" for="checkInInput">Check In</label>
+                            <input type="date" class="search-input" id="checkInInput">
+                        </div>
+                    </div>
+
+                    <div class="search-divider"></div>
+
+                    <!-- Check-Out Date -->
+                    <div class="search-field">
+                        <div class="search-field-icon">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <div class="search-field-content">
+                            <label class="search-label" for="checkOutInput">Check Out</label>
+                            <input type="date" class="search-input" id="checkOutInput">
+                        </div>
+                    </div>
+
+                    <div class="search-divider"></div>
+
+                    <!-- Guests Counter -->
+                    <div class="search-field">
+                        <div class="search-field-icon">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="search-field-content">
+                            <label class="search-label">Guests</label>
+                            <div class="guests-control">
+                                <button type="button" class="guests-btn" id="guestsDown">−</button>
+                                <span id="guestsCount">2</span>
+                                <button type="button" class="guests-btn" id="guestsUp">+</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Submit -->
+                    <button type="submit" class="btn btn-primary search-submit">
+                        <i class="fas fa-search"></i>
+                        Search
+                    </button>
+
+                </form>
+            </div>
+            <!-- /search-card -->
+
+        </div>
+    </div>
+
+    <!-- Scroll indicator at bottom of hero -->
+    <div class="hero-scroll">
+        <span>Scroll to Explore</span>
+        <div class="scroll-line"></div>
+    </div>
+</section>
+
+
+<!-- ================================================================
+     STATS BAR
+================================================================ -->
+<div class="stats-bar">
+    <div class="container">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div style="display:flex; align-items:baseline; gap:0.15rem;">
+                    <span class="stat-number" data-target="500">500</span>
+                    <span class="stat-plus">+</span>
+                </div>
+                <span class="stat-label">Premium Hotels</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+                <div style="display:flex; align-items:baseline; gap:0.15rem;">
+                    <span class="stat-number" data-target="50">50</span>
+                    <span class="stat-plus">+</span>
+                </div>
+                <span class="stat-label">Cities Covered</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+                <div style="display:flex; align-items:baseline; gap:0.15rem;">
+                    <span class="stat-number" data-target="25000">25,000</span>
+                    <span class="stat-plus">+</span>
+                </div>
+                <span class="stat-label">Happy Guests</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+                <div style="display:flex; align-items:baseline; gap:0.15rem;">
+                    <span class="stat-number" data-target="4.8" data-decimal="1">4.8</span>
+                    <span class="stat-plus">/5</span>
+                </div>
+                <span class="stat-label">Average Rating</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- ================================================================
+     DESTINATIONS SECTION — Asymmetric grid
+================================================================ -->
+<section class="section destinations-section">
+    <div class="container">
+
+        <div class="section-header">
+            <div>
+                <p class="section-eyebrow">Explore by Location</p>
+                <h2 class="section-title">Pakistan's Most<br>Beloved Destinations</h2>
+            </div>
+            <div style="text-align: right; flex-shrink: 0;">
+                <p class="section-subtitle" style="margin-bottom:1.25rem;">
+                    From ancient Mughal capitals to pristine mountain valleys.
+                </p>
+                <a href="hotels.html" class="btn btn-secondary btn-sm">
+                    All Destinations <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Asymmetric destination cards grid -->
+        <div class="destinations-grid">
+
+            <!-- Large — spans 2 cols × 2 rows -->
+            <div class="destination-card dest-hunza">
+                <img src="https://picsum.photos/seed/hunza-valley/800/900" alt="Hunza Valley" class="destination-img" loading="lazy">
+                <div class="destination-overlay"></div>
+                <div class="destination-info">
+                    <span class="destination-hotels">43 Hotels</span>
+                    <h3 class="destination-name headline-md">Hunza Valley</h3>
+                    <p class="destination-sub">Gilgit-Baltistan</p>
+                </div>
+            </div>
+
+            <!-- Medium — top right -->
+            <a href="hotels.html?dest=lahore" class="destination-card dest-lahore">
+                <img src="https://picsum.photos/seed/lahore-city/700/400" alt="Lahore" class="destination-img" loading="lazy">
+                <div class="destination-overlay"></div>
+                <div class="destination-info">
+                    <span class="destination-hotels">128 Hotels</span>
+                    <h3 class="destination-name headline-sm">Lahore</h3>
+                    <p class="destination-sub">Punjab</p>
+                </div>
+            </a>
+
+            <!-- Medium — bottom right -->
+            <a href="hotels.html?dest=islamabad" class="destination-card dest-islamabad">
+                <img src="https://picsum.photos/seed/islamabad-city/700/400" alt="Islamabad" class="destination-img" loading="lazy">
+                <div class="destination-overlay"></div>
+                <div class="destination-info">
+                    <span class="destination-hotels">89 Hotels</span>
+                    <h3 class="destination-name headline-sm">Islamabad</h3>
+                    <p class="destination-sub">Federal Capital</p>
+                </div>
+            </a>
+
+            <!-- Small row -->
+            <a href="hotels.html?dest=murree" class="destination-card dest-murree">
+                <img src="https://picsum.photos/seed/murree-hills/500/400" alt="Murree" class="destination-img" loading="lazy">
+                <div class="destination-overlay"></div>
+                <div class="destination-info">
+                    <span class="destination-hotels">67 Hotels</span>
+                    <h3 class="destination-name headline-sm">Murree</h3>
+                    <p class="destination-sub">Punjab</p>
+                </div>
+            </a>
+
+            <a href="hotels.html?dest=karachi" class="destination-card dest-karachi">
+                <img src="https://picsum.photos/seed/karachi-city/500/400" alt="Karachi" class="destination-img" loading="lazy">
+                <div class="destination-overlay"></div>
+                <div class="destination-info">
+                    <span class="destination-hotels">156 Hotels</span>
+                    <h3 class="destination-name headline-sm">Karachi</h3>
+                    <p class="destination-sub">Sindh</p>
+                </div>
+            </a>
+
+            <a href="hotels.html?dest=swat" class="destination-card dest-swat">
+                <img src="https://picsum.photos/seed/swat-valley/500/400" alt="Swat Valley" class="destination-img" loading="lazy">
+                <div class="destination-overlay"></div>
+                <div class="destination-info">
+                    <span class="destination-hotels">34 Hotels</span>
+                    <h3 class="destination-name headline-sm">Swat Valley</h3>
+                    <p class="destination-sub">Khyber Pakhtunkhwa</p>
+                </div>
+            </a>
+
+        </div>
+        <!-- /destinations-grid -->
+
+    </div>
+</section>
+
+
+<!-- ================================================================
+     FEATURED HOTELS — 3-column card grid
+================================================================ -->
+<section class="section featured-section">
+    <div class="container">
+
+        <div class="section-header">
+            <div>
+                <p class="section-eyebrow">Handpicked for You</p>
+                <h2 class="section-title">Featured<br>Properties</h2>
+            </div>
+            <a href="hotels.html" class="btn btn-ghost">
+                View All Hotels &nbsp;<i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+
+        <div class="hotels-grid">
+
+            <!-- ---- Hotel Card 1 ---- -->
+            <article class="hotel-card">
+                <div class="hotel-card-image">
+                    <img src="https://picsum.photos/seed/pearl-continental-lhr/600/400" alt="Pearl Continental Lahore" loading="lazy">
+                    <div class="hotel-card-badge"><i class="fas fa-star"></i> 4.9</div>
+                    <button class="hotel-wishlist" aria-label="Save to wishlist"><i class="far fa-heart"></i></button>
+                </div>
+                <div class="hotel-card-body">
+                    <div class="hotel-card-meta">
+                        <div class="stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <span class="hotel-card-tag">Luxury</span>
+                    </div>
+                    <h3 class="hotel-card-title">Pearl Continental</h3>
+                    <p class="hotel-card-location"><i class="fas fa-map-marker-alt"></i>Lahore, Punjab</p>
+                    <p class="hotel-card-desc body-md">Iconic 5-star landmark on The Mall with world-class amenities and timeless elegance.</p>
+                    <div class="hotel-card-footer">
+                        <div class="hotel-price">
+                            <span class="price-from">From</span>
+                            <span class="price-amount">PKR 25,000</span>
+                            <span class="price-night">/night</span>
+                        </div>
+                        <a href="hotel-details.html" class="btn btn-primary btn-sm">View Hotel</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- ---- Hotel Card 2 ---- -->
+            <article class="hotel-card">
+                <div class="hotel-card-image">
+                    <img src="https://picsum.photos/seed/serena-islamabad/600/400" alt="Serena Hotel Islamabad" loading="lazy">
+                    <div class="hotel-card-badge"><i class="fas fa-star"></i> 4.8</div>
+                    <button class="hotel-wishlist" aria-label="Save to wishlist"><i class="far fa-heart"></i></button>
+                </div>
+                <div class="hotel-card-body">
+                    <div class="hotel-card-meta">
+                        <div class="stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <span class="hotel-card-tag">Luxury</span>
+                    </div>
+                    <h3 class="hotel-card-title">Serena Hotel</h3>
+                    <p class="hotel-card-location"><i class="fas fa-map-marker-alt"></i>Islamabad, Capital</p>
+                    <p class="hotel-card-desc body-md">An oasis of calm set against the Margalla Hills, blending traditional architecture with modern comfort.</p>
+                    <div class="hotel-card-footer">
+                        <div class="hotel-price">
+                            <span class="price-from">From</span>
+                            <span class="price-amount">PKR 28,000</span>
+                            <span class="price-night">/night</span>
+                        </div>
+                        <a href="hotel-details.html" class="btn btn-primary btn-sm">View Hotel</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- ---- Hotel Card 3 ---- -->
+            <article class="hotel-card">
+                <div class="hotel-card-image">
+                    <img src="https://picsum.photos/seed/shangrila-skardu/600/400" alt="Shangrila Resort Skardu" loading="lazy">
+                    <div class="hotel-card-badge"><i class="fas fa-star"></i> 4.7</div>
+                    <button class="hotel-wishlist" aria-label="Save to wishlist"><i class="far fa-heart"></i></button>
+                </div>
+                <div class="hotel-card-body">
+                    <div class="hotel-card-meta">
+                        <div class="stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <span class="hotel-card-tag">Resort</span>
+                    </div>
+                    <h3 class="hotel-card-title">Shangrila Resort</h3>
+                    <p class="hotel-card-location"><i class="fas fa-map-marker-alt"></i>Skardu, Gilgit-Baltistan</p>
+                    <p class="hotel-card-desc body-md">Perched beside the serene Shangrila Lake with panoramic views of the Karakoram mountains.</p>
+                    <div class="hotel-card-footer">
+                        <div class="hotel-price">
+                            <span class="price-from">From</span>
+                            <span class="price-amount">PKR 18,000</span>
+                            <span class="price-night">/night</span>
+                        </div>
+                        <a href="hotel-details.html" class="btn btn-primary btn-sm">View Hotel</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- ---- Hotel Card 4 ---- -->
+            <article class="hotel-card">
+                <div class="hotel-card-image">
+                    <img src="https://picsum.photos/seed/avari-towers-khi/600/400" alt="Avari Towers Karachi" loading="lazy">
+                    <div class="hotel-card-badge"><i class="fas fa-star"></i> 4.6</div>
+                    <button class="hotel-wishlist" aria-label="Save to wishlist"><i class="far fa-heart"></i></button>
+                </div>
+                <div class="hotel-card-body">
+                    <div class="hotel-card-meta">
+                        <div class="stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <span class="hotel-card-tag">Business</span>
+                    </div>
+                    <h3 class="hotel-card-title">Avari Towers</h3>
+                    <p class="hotel-card-location"><i class="fas fa-map-marker-alt"></i>Karachi, Sindh</p>
+                    <p class="hotel-card-desc body-md">Karachi's iconic business hotel with executive facilities overlooking the Arabian Sea.</p>
+                    <div class="hotel-card-footer">
+                        <div class="hotel-price">
+                            <span class="price-from">From</span>
+                            <span class="price-amount">PKR 22,000</span>
+                            <span class="price-night">/night</span>
+                        </div>
+                        <a href="hotel-details.html" class="btn btn-primary btn-sm">View Hotel</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- ---- Hotel Card 5 ---- -->
+            <article class="hotel-card">
+                <div class="hotel-card-image">
+                    <img src="https://picsum.photos/seed/hunza-serena-inn/600/400" alt="Hunza Serena Inn" loading="lazy">
+                    <div class="hotel-card-badge"><i class="fas fa-star"></i> 4.8</div>
+                    <button class="hotel-wishlist" aria-label="Save to wishlist"><i class="far fa-heart"></i></button>
+                </div>
+                <div class="hotel-card-body">
+                    <div class="hotel-card-meta">
+                        <div class="stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <span class="hotel-card-tag">Heritage</span>
+                    </div>
+                    <h3 class="hotel-card-title">Hunza Serena Inn</h3>
+                    <p class="hotel-card-location"><i class="fas fa-map-marker-alt"></i>Karimabad, Hunza</p>
+                    <p class="hotel-card-desc body-md">A heritage inn nestled in the heart of Karimabad with breathtaking views of Rakaposhi peak.</p>
+                    <div class="hotel-card-footer">
+                        <div class="hotel-price">
+                            <span class="price-from">From</span>
+                            <span class="price-amount">PKR 15,000</span>
+                            <span class="price-night">/night</span>
+                        </div>
+                        <a href="hotel-details.html" class="btn btn-primary btn-sm">View Hotel</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- ---- Hotel Card 6 ---- -->
+            <article class="hotel-card">
+                <div class="hotel-card-image">
+                    <img src="https://picsum.photos/seed/faletties-hotel/600/400" alt="Faletti's Hotel Lahore" loading="lazy">
+                    <div class="hotel-card-badge"><i class="fas fa-star"></i> 4.5</div>
+                    <button class="hotel-wishlist" aria-label="Save to wishlist"><i class="far fa-heart"></i></button>
+                </div>
+                <div class="hotel-card-body">
+                    <div class="hotel-card-meta">
+                        <div class="stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <span class="hotel-card-tag">Heritage</span>
+                    </div>
+                    <h3 class="hotel-card-title">Faletti's Hotel</h3>
+                    <p class="hotel-card-location"><i class="fas fa-map-marker-alt"></i>Lahore, Punjab</p>
+                    <p class="hotel-card-desc body-md">Lahore's most storied hotel, established 1880, where history and hospitality magnificently intertwine.</p>
+                    <div class="hotel-card-footer">
+                        <div class="hotel-price">
+                            <span class="price-from">From</span>
+                            <span class="price-amount">PKR 16,000</span>
+                            <span class="price-night">/night</span>
+                        </div>
+                        <a href="hotel-details.html" class="btn btn-primary btn-sm">View Hotel</a>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+        <!-- /hotels-grid -->
+
+    </div>
+</section>
+
+
+<!-- ================================================================
+     WHY CHOOSE US — Two-column asymmetric layout
+================================================================ -->
+<section class="section features-section">
+    <div class="container">
+        <div class="features-layout">
+
+            <!-- Left: Big editorial text -->
+            <div class="features-text">
+                <p class="section-eyebrow">Why PakStay</p>
+                <h2 class="section-title">The Standard for<br>Premium Travel<br>in Pakistan</h2>
+                <p class="section-subtitle" style="margin-top: 1.5rem;">
+                    We work directly with hotel owners to ensure every listing meets our standard of excellence — so you travel with confidence.
+                </p>
+                <a href="about.html" class="btn btn-primary" style="margin-top: 2rem;">
+                    Our Story &nbsp;<i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- Right: Feature list -->
+            <div class="features-list">
+
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                    <div>
+                        <h3 class="feature-title">Verified Listings</h3>
+                        <p class="feature-desc body-md">Every hotel is personally inspected and verified by our quality assurance team before it goes live.</p>
+                    </div>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fas fa-tags"></i></div>
+                    <div>
+                        <h3 class="feature-title">Best Price Guarantee</h3>
+                        <p class="feature-desc body-md">Book directly through PakStay and get the lowest available rate — or we'll match any lower price you find.</p>
+                    </div>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fas fa-headset"></i></div>
+                    <div>
+                        <h3 class="feature-title">24/7 Guest Support</h3>
+                        <p class="feature-desc body-md">Our dedicated support team is available around the clock to assist with queries, changes, or cancellations.</p>
+                    </div>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fas fa-lock"></i></div>
+                    <div>
+                        <h3 class="feature-title">Secure Bookings</h3>
+                        <p class="feature-desc body-md">Your payment data is encrypted and your reservation is guaranteed the moment you confirm.</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- ================================================================
+     TESTIMONIALS — 3-column with featured middle card
+================================================================ -->
+<section class="section testimonials-section">
+    <div class="container">
+
+        <div class="section-header">
+            <div>
+                <p class="section-eyebrow">Guest Voices</p>
+                <h2 class="section-title">What Our<br>Guests Say</h2>
+            </div>
+        </div>
+
+        <div class="testimonials-grid">
+
+            <div class="testimonial-card">
+                <div class="testimonial-quote">&ldquo;</div>
+                <p class="testimonial-text">
+                    PakStay made finding a boutique hotel in Hunza completely effortless. The photos were accurate, the booking process was seamless, and the hotel exceeded every expectation.
+                </p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">AK</div>
+                    <div>
+                        <div class="testimonial-name">Ayesha Khan</div>
+                        <div class="testimonial-meta">Lahore &mdash; Stayed in Hunza</div>
+                    </div>
+                    <div class="stars" style="margin-left:auto;">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Featured center card — primary color background -->
+            <div class="testimonial-card testimonial-featured">
+                <div class="testimonial-quote">&ldquo;</div>
+                <p class="testimonial-text">
+                    I've used every hotel site available in Pakistan. PakStay is in a different league — the curation is outstanding and you can tell they truly understand premium travel in this country.
+                </p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">MR</div>
+                    <div>
+                        <div class="testimonial-name">Muhammad Raza</div>
+                        <div class="testimonial-meta">Islamabad &mdash; Business Traveller</div>
+                    </div>
+                    <div class="stars" style="margin-left:auto;">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="testimonial-quote">&ldquo;</div>
+                <p class="testimonial-text">
+                    Booked a family trip to Murree through PakStay. The hill station recommendations are fantastic — found a hidden gem we never would have discovered otherwise.
+                </p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">SA</div>
+                    <div>
+                        <div class="testimonial-name">Sara Ahmed</div>
+                        <div class="testimonial-meta">Karachi &mdash; Family Traveller</div>
+                    </div>
+                    <div class="stars" style="margin-left:auto;">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- ================================================================
+     CTA BANNER — "Are You a Hotel Owner?"
+================================================================ -->
+<section class="cta-section">
+    <div class="cta-inner">
+        <div class="container">
+            <div class="cta-content">
+                <div>
+                    <p class="section-eyebrow" style="color: rgba(255,255,255,0.55);">List Your Property</p>
+                    <h2 class="cta-title display-sm">Are You a Hotel Owner<br>in Pakistan?</h2>
+                </div>
+                <div class="cta-actions">
+                    <p class="cta-desc">
+                        Join over 500 properties already listed on PakStay and reach thousands of quality guests every month. Listing is free to start.
+                    </p>
+                    <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+                        <a href="signup.html" class="btn btn-white btn-lg">List Your Hotel</a>
+                        <a href="about.html"  class="btn btn-glass btn-lg">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ================================================================
+     FOOTER
+================================================================ -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+
+            <!-- Brand Column -->
+            <div class="footer-brand">
+                <div class="footer-logo">PakStay</div>
+                <p class="footer-tagline">
+                    Pakistan's premier hotel booking platform — connecting discerning travellers with the finest properties across the nation.
+                </p>
+                <div class="footer-social">
+                    <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+
+            <!-- Explore Column -->
+            <div>
+                <p class="footer-col-title">Explore</p>
+                <ul class="footer-links">
+                    <li><a href="hotels.html" class="footer-link">Search Hotels</a></li>
+                    <li><a href="hotels.html" class="footer-link">Top Destinations</a></li>
+                    <li><a href="hotels.html" class="footer-link">Luxury Hotels</a></li>
+                    <li><a href="hotels.html" class="footer-link">Mountain Resorts</a></li>
+                    <li><a href="hotels.html" class="footer-link">Heritage Properties</a></li>
+                </ul>
+            </div>
+
+            <!-- Company Column -->
+            <div>
+                <p class="footer-col-title">Company</p>
+                <ul class="footer-links">
+                    <li><a href="about.html"   class="footer-link">About PakStay</a></li>
+                    <li><a href="contact.html" class="footer-link">Contact Us</a></li>
+                    <li><a href="#"            class="footer-link">Careers</a></li>
+                    <li><a href="#"            class="footer-link">Press &amp; Media</a></li>
+                    <li><a href="#"            class="footer-link">Partner Program</a></li>
+                </ul>
+            </div>
+
+            <!-- Support Column -->
+            <div>
+                <p class="footer-col-title">Support</p>
+                <ul class="footer-links">
+                    <li><a href="#" class="footer-link">Help Centre</a></li>
+                    <li><a href="#" class="footer-link">Booking Policy</a></li>
+                    <li><a href="#" class="footer-link">Privacy Policy</a></li>
+                    <li><a href="#" class="footer-link">Terms of Service</a></li>
+                    <li><a href="#" class="footer-link">Hotel Owners</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p class="footer-copy">&copy; 2024 PakStay. All rights reserved. Built for Pakistan, by Pakistan.</p>
+            <div class="footer-legal">
+                <a href="#" class="footer-link" style="font-size:var(--body-md);">Privacy</a>
+                <a href="#" class="footer-link" style="font-size:var(--body-md);">Terms</a>
+                <a href="#" class="footer-link" style="font-size:var(--body-md);">Cookies</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<!-- Scroll to Top Button -->
+<button class="scroll-top" id="scrollTop" title="Back to top" aria-label="Scroll to top">
+    <i class="fas fa-arrow-up"></i>
+</button>
+
+
+<!-- ================================================================
+     SCRIPTS
+================================================================ -->
+<!-- jQuery 3.7.1 -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<!-- Shared JS (navbar, scroll-to-top, mobile menu) -->
+<script src="js/main.js"></script>
+<!-- Homepage JS (search form, counters, wishlists) -->
+<script src="js/home.js"></script>
+
+</body>
+</html>

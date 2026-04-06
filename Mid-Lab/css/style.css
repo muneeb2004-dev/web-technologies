@@ -1,0 +1,819 @@
+/* ================================================================
+   PAKSTAY — GLOBAL DESIGN SYSTEM
+   "The Verdant Archive" design language
+
+   TABLE OF CONTENTS:
+   1.  Google Fonts Import
+   2.  CSS Custom Properties (Design Tokens)
+   3.  Reset & Base
+   4.  Typography Classes
+   5.  Layout Utilities
+   6.  Button System
+   7.  Card System
+   8.  Input System
+   9.  Badge & Tag
+   10. Star Rating
+   11. Navbar
+   12. Footer
+   13. Scroll-to-Top Button
+   14. Responsive Breakpoints
+================================================================ */
+
+
+/* ================================================================
+   1. GOOGLE FONTS IMPORT
+================================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,300;1,6..72,400&family=Manrope:wght@300;400;500;600;700;800&display=swap');
+
+
+/* ================================================================
+   2. CSS CUSTOM PROPERTIES (Design Tokens)
+================================================================ */
+:root {
+    /* ---- Core Color Palette ---- */
+    --primary:              #2d5235;   /* Forest Canopy */
+    --primary-container:    #456a4b;   /* Lighter Forest */
+    --on-primary:           #ffffff;   /* Text on primary */
+
+    --surface:              #fefae6;   /* Parchment Foundation — main bg */
+    --surface-low:          #f8f4e0;   /* Inset sections */
+    --surface-container:    #f2eedb;   /* Card backgrounds */
+    --surface-high:         #ece8d4;   /* Hover states */
+    --surface-highest:      #e5e1cd;   /* Secondary btn bg */
+    --surface-lowest:       #ffffff;   /* Pure white for cards */
+
+    --secondary:            #536254;   /* Mist */
+    --secondary-container:  #d6e7d4;   /* Selected range, pill highlights */
+    --on-secondary:         #ffffff;
+
+    --tertiary:             #6c3c47;   /* Earth — warm accents */
+
+    --on-surface:           #1d1c10;   /* Main text — NEVER use #000 */
+    --on-surface-variant:   #46473a;   /* Muted text */
+
+    /* Ghost border — 15% opacity only, never solid full-opacity borders */
+    --outline-variant:      rgba(70, 71, 58, 0.15);
+
+    /* ---- Signature Gradient ---- */
+    --gradient-primary:     linear-gradient(135deg, #2d5235 0%, #456a4b 100%);
+    --gradient-hero:        linear-gradient(160deg, rgba(22,42,25,0.85) 0%, rgba(45,82,53,0.55) 50%, rgba(29,28,16,0.90) 100%);
+
+    /* ---- Glass Effect ---- */
+    --glass-bg:             rgba(254, 250, 230, 0.80);
+    --glass-blur:           blur(24px);
+
+    /* ---- Ambient Shadows (green-tinted, diffused, low opacity) ---- */
+    --shadow-xs:            0 2px 20px  rgba(45, 82, 53, 0.04);
+    --shadow-sm:            0 4px 40px  rgba(45, 82, 53, 0.06);
+    --shadow-md:            0 8px 60px  rgba(45, 82, 53, 0.08);
+    --shadow-lg:            0 16px 80px rgba(45, 82, 53, 0.10);
+    --shadow-float:         0 24px 100px rgba(45, 82, 53, 0.12);
+
+    /* ---- Border Radius ---- */
+    --radius-xs:   0.2rem;
+    --radius-sm:   0.35rem;
+    --radius-md:   0.625rem;
+    --radius-lg:   1rem;
+    --radius-xl:   1.5rem;
+    --radius-full: 9999px;
+
+    /* ---- Spacing Scale ---- */
+    --section-gap:        6rem;
+    --container-padding:  1.5rem;
+
+    /* ---- Typography Scale ---- */
+    --display-lg:    3.5rem;    /* 56px */
+    --display-md:    2.75rem;   /* 44px */
+    --display-sm:    2.25rem;   /* 36px */
+    --headline-lg:   1.875rem;  /* 30px */
+    --headline-md:   1.5rem;    /* 24px */
+    --headline-sm:   1.25rem;   /* 20px */
+    --title-lg:      1.125rem;  /* 18px */
+    --title-md:      1rem;      /* 16px */
+    --body-lg:       1rem;      /* 16px */
+    --body-md:       0.875rem;  /* 14px */
+    --label-lg:      0.875rem;  /* 14px */
+    --label-md:      0.75rem;   /* 12px */
+
+    /* ---- Transitions ---- */
+    --transition-fast:  150ms ease;
+    --transition-base:  300ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow:  500ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
+/* ================================================================
+   3. RESET & BASE
+================================================================ */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: 'Manrope', system-ui, -apple-system, sans-serif;
+    background-color: var(--surface);
+    color: var(--on-surface);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color var(--transition-fast);
+}
+
+ul, ol { list-style: none; }
+
+button, input, select, textarea {
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    background: none;
+    outline: none;
+}
+
+input, textarea, select {
+    outline: none;
+}
+
+
+/* ================================================================
+   4. TYPOGRAPHY CLASSES
+================================================================ */
+.display-lg {
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: clamp(2.25rem, 5vw, var(--display-lg));
+    font-weight: 400;
+    line-height: 1.08;
+    letter-spacing: -0.025em;
+}
+
+.display-md {
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: clamp(1.875rem, 4vw, var(--display-md));
+    font-weight: 400;
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+}
+
+.display-sm {
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: clamp(1.625rem, 3vw, var(--display-sm));
+    font-weight: 400;
+    line-height: 1.18;
+    letter-spacing: -0.015em;
+}
+
+.headline-lg {
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: var(--headline-lg);
+    font-weight: 500;
+    line-height: 1.25;
+}
+
+.headline-md {
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: var(--headline-md);
+    font-weight: 500;
+    line-height: 1.3;
+}
+
+.headline-sm {
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: var(--headline-sm);
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+.body-lg { font-size: var(--body-lg);  line-height: 1.7; font-weight: 400; }
+.body-md { font-size: var(--body-md);  line-height: 1.7; font-weight: 400; }
+.label-lg { font-size: var(--label-lg); font-weight: 600; }
+.label-md { font-size: var(--label-md); font-weight: 600; }
+
+
+/* ================================================================
+   5. LAYOUT UTILITIES
+================================================================ */
+.container {
+    width: 100%;
+    max-width: 1280px;
+    margin-inline: auto;
+    padding-inline: var(--container-padding);
+}
+
+.section {
+    padding-block: var(--section-gap);
+}
+
+/* Section Header — Intentional Asymmetry: title left, action right */
+.section-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.section-eyebrow {
+    font-family: 'Manrope', sans-serif;
+    font-size: var(--label-lg);
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--secondary);
+    margin-bottom: 0.625rem;
+}
+
+.section-title {
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: clamp(1.875rem, 3.5vw, var(--display-sm));
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--on-surface);
+}
+
+.section-subtitle {
+    font-size: var(--body-md);
+    color: var(--on-surface-variant);
+    max-width: 46ch;
+    line-height: 1.75;
+}
+
+.text-center { text-align: center; }
+.text-muted  { color: var(--on-surface-variant); }
+
+
+/* ================================================================
+   6. BUTTON SYSTEM
+================================================================ */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.75rem;
+    border-radius: var(--radius-md);
+    font-size: var(--label-lg);
+    font-weight: 600;
+    transition: all var(--transition-base);
+    white-space: nowrap;
+    cursor: pointer;
+    border: none;
+    line-height: 1;
+}
+
+/* Primary — gradient fill */
+.btn-primary {
+    background: var(--gradient-primary);
+    color: var(--on-primary);
+    box-shadow: var(--shadow-xs);
+}
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    filter: brightness(1.06);
+}
+.btn-primary:active { transform: translateY(0); }
+
+/* Secondary — carved / tonal */
+.btn-secondary {
+    background: var(--surface-highest);
+    color: var(--primary);
+}
+.btn-secondary:hover {
+    background: var(--surface-high);
+    transform: translateY(-1px);
+}
+
+/* Ghost — text only */
+.btn-ghost {
+    color: var(--on-surface-variant);
+    padding-inline: 0.5rem;
+}
+.btn-ghost:hover { color: var(--primary); }
+
+/* Glass — for use over imagery */
+.btn-glass {
+    background: rgba(255, 255, 255, 0.22);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+}
+.btn-glass:hover { background: rgba(255, 255, 255, 0.32); }
+
+/* White — for use on dark/gradient backgrounds */
+.btn-white {
+    background: white;
+    color: var(--primary);
+}
+.btn-white:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+/* Sizes */
+.btn-lg { padding: 1rem 2.25rem;   font-size: var(--body-lg); }
+.btn-sm { padding: 0.5rem 1.125rem; font-size: var(--body-md); }
+.btn-xs { padding: 0.375rem 0.875rem; font-size: var(--label-md); }
+
+
+/* ================================================================
+   7. CARD SYSTEM
+================================================================ */
+.card {
+    background: var(--surface-lowest);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+/* Glass card — floating over backgrounds */
+.card-glass {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border-radius: var(--radius-lg);
+}
+
+
+/* ================================================================
+   8. INPUT SYSTEM  (Bottom-line + ghost border — NO solid borders)
+================================================================ */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+}
+
+.form-label {
+    font-size: var(--label-md);
+    font-weight: 700;
+    color: var(--secondary);
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    transition: color var(--transition-fast);
+}
+
+.form-input {
+    background: var(--surface-low);
+    border: none;
+    border-bottom: 2px solid var(--outline-variant);
+    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+    padding: 0.75rem 1rem;
+    color: var(--on-surface);
+    font-size: var(--body-lg);
+    transition: border-color var(--transition-fast), background var(--transition-fast);
+    width: 100%;
+}
+
+.form-input:focus {
+    border-bottom-color: var(--primary);
+    background: var(--surface-container);
+}
+
+.form-input::placeholder { color: var(--on-surface-variant); opacity: 0.6; }
+
+/* Floating label version */
+.form-group:focus-within .form-label { color: var(--primary); }
+
+/* Error state */
+.form-input.error { border-bottom-color: var(--tertiary); }
+.form-error {
+    font-size: var(--label-md);
+    color: var(--tertiary);
+    margin-top: 0.25rem;
+    display: none;
+}
+.form-error.visible { display: block; }
+
+
+/* ================================================================
+   9. BADGE & TAG
+================================================================ */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius-full);
+    font-size: var(--label-md);
+    font-weight: 600;
+}
+.badge-primary { background: var(--secondary-container); color: var(--primary); }
+.badge-surface  { background: var(--surface-highest); color: var(--on-surface-variant); }
+.badge-white    { background: rgba(255,255,255,0.9); color: var(--primary); }
+
+
+/* ================================================================
+   10. STAR RATING
+================================================================ */
+.stars {
+    display: inline-flex;
+    gap: 2px;
+    color: #c9a227;
+    font-size: 0.8125rem;
+}
+.stars .fa-star-half-alt { color: #c9a227; }
+
+
+/* ================================================================
+   11. NAVBAR
+================================================================ */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding-block: 1.375rem;
+    transition: padding var(--transition-base), background var(--transition-base), box-shadow var(--transition-base);
+}
+
+/* On hero pages — fully transparent */
+.navbar.transparent {
+    background: transparent;
+}
+
+/* After scrolling — glass effect */
+.navbar.scrolled {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    box-shadow: var(--shadow-sm);
+    padding-block: 0.875rem;
+}
+
+/* On non-hero pages (light bg) — solid surface */
+.navbar.solid {
+    background: var(--surface);
+    box-shadow: var(--shadow-xs);
+    padding-block: 0.875rem;
+}
+
+.navbar-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+/* Logo */
+.navbar-logo {
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 1.6875rem;
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    color: white;
+    transition: color var(--transition-fast);
+    flex-shrink: 0;
+}
+.navbar.scrolled .navbar-logo,
+.navbar.solid    .navbar-logo { color: var(--primary); }
+
+.navbar-logo span { opacity: 0.65; }
+.navbar.scrolled .navbar-logo span,
+.navbar.solid    .navbar-logo span { color: var(--secondary); opacity: 1; }
+
+/* Nav links */
+.navbar-nav {
+    display: flex;
+    align-items: center;
+    gap: 2.25rem;
+}
+
+.nav-link {
+    font-size: var(--body-md);
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.88);
+    position: relative;
+    padding-bottom: 3px;
+    transition: color var(--transition-fast);
+}
+.navbar.scrolled .nav-link,
+.navbar.solid    .nav-link { color: var(--on-surface-variant); }
+
+/* Animated underline */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary);
+    border-radius: var(--radius-full);
+    transition: width var(--transition-base);
+}
+.nav-link:hover { color: white; }
+.navbar.scrolled .nav-link:hover,
+.navbar.solid    .nav-link:hover { color: var(--primary); }
+.nav-link:hover::after,
+.nav-link.active::after { width: 100%; }
+
+/* Action buttons */
+.navbar-actions { display: flex; align-items: center; gap: 0.875rem; }
+
+.navbar-btn-login {
+    font-size: var(--body-md);
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.88);
+    padding: 0.5rem 1.125rem;
+    border-radius: var(--radius-md);
+    transition: all var(--transition-fast);
+}
+.navbar.scrolled .navbar-btn-login,
+.navbar.solid    .navbar-btn-login { color: var(--on-surface-variant); }
+.navbar-btn-login:hover { background: rgba(255,255,255,0.1); color: white; }
+.navbar.scrolled .navbar-btn-login:hover,
+.navbar.solid    .navbar-btn-login:hover { background: var(--surface-container); color: var(--primary); }
+
+.navbar-btn-signup {
+    background: rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    color: white;
+    padding: 0.5rem 1.25rem;
+    border-radius: var(--radius-md);
+    font-size: var(--body-md);
+    font-weight: 600;
+    transition: all var(--transition-base);
+    border: 1px solid rgba(255,255,255,0.25);
+}
+.navbar.scrolled .navbar-btn-signup,
+.navbar.solid    .navbar-btn-signup {
+    background: var(--gradient-primary);
+    color: var(--on-primary);
+    border-color: transparent;
+}
+.navbar-btn-signup:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
+    background: rgba(255, 255, 255, 0.28);
+}
+.navbar.scrolled .navbar-btn-signup:hover,
+.navbar.solid    .navbar-btn-signup:hover {
+    filter: brightness(1.08);
+    background: var(--gradient-primary);
+}
+
+/* Hamburger (mobile) */
+.navbar-hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    padding: 0.5rem;
+    cursor: pointer;
+}
+.hamburger-line {
+    width: 24px;
+    height: 2px;
+    background: white;
+    border-radius: var(--radius-full);
+    transition: all var(--transition-base);
+    display: block;
+}
+.navbar.scrolled .hamburger-line,
+.navbar.solid    .hamburger-line { background: var(--on-surface); }
+
+/* Animated hamburger → X */
+.navbar-hamburger.open .hamburger-line:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.navbar-hamburger.open .hamburger-line:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.navbar-hamburger.open .hamburger-line:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* Mobile full-screen overlay menu */
+.navbar-mobile {
+    position: fixed;
+    inset: 0;
+    background: rgba(254, 250, 230, 0.97);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.75rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--transition-base), visibility var(--transition-base);
+}
+.navbar-mobile.open { opacity: 1; visibility: visible; }
+
+.mobile-nav-link {
+    font-family: 'Newsreader', serif;
+    font-size: 2.25rem;
+    color: var(--on-surface);
+    font-weight: 400;
+    transition: color var(--transition-fast);
+}
+.mobile-nav-link:hover { color: var(--primary); }
+
+.mobile-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    font-size: 2rem;
+    color: var(--on-surface-variant);
+    line-height: 1;
+    padding: 0.5rem;
+    transition: color var(--transition-fast);
+}
+.mobile-close:hover { color: var(--primary); }
+
+.mobile-divider {
+    width: 1px;
+    height: 40px;
+    background: var(--outline-variant);
+}
+
+.mobile-auth {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+
+/* ================================================================
+   12. FOOTER
+================================================================ */
+.footer {
+    background: var(--primary);
+    color: rgba(255, 255, 255, 0.80);
+    padding-top: 5rem;
+    padding-bottom: 2.5rem;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 4rem;
+}
+
+.footer-logo {
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 1.875rem;
+    font-weight: 600;
+    color: white;
+    letter-spacing: -0.03em;
+    margin-bottom: 1rem;
+}
+
+.footer-tagline {
+    font-size: var(--body-md);
+    line-height: 1.75;
+    color: rgba(255, 255, 255, 0.55);
+    margin-bottom: 1.75rem;
+    max-width: 30ch;
+}
+
+.footer-social { display: flex; gap: 0.75rem; }
+
+.social-link {
+    width: 38px;
+    height: 38px;
+    border-radius: var(--radius-md);
+    background: rgba(255, 255, 255, 0.10);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.875rem;
+    color: rgba(255,255,255,0.75);
+    transition: background var(--transition-fast), color var(--transition-fast);
+}
+.social-link:hover { background: rgba(255,255,255,0.20); color: white; }
+
+.footer-col-title {
+    font-size: var(--label-md);
+    font-weight: 700;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.38);
+    margin-bottom: 1.375rem;
+}
+
+.footer-links { display: flex; flex-direction: column; gap: 0.75rem; }
+
+.footer-link {
+    font-size: var(--body-md);
+    color: rgba(255, 255, 255, 0.65);
+    transition: color var(--transition-fast);
+}
+.footer-link:hover { color: white; }
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.10);
+    padding-top: 1.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+}
+
+.footer-copy {
+    font-size: var(--body-md);
+    color: rgba(255, 255, 255, 0.38);
+}
+
+.footer-legal {
+    display: flex;
+    gap: 1.5rem;
+}
+
+
+/* ================================================================
+   13. SCROLL-TO-TOP BUTTON
+================================================================ */
+.scroll-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 44px;
+    height: 44px;
+    background: var(--gradient-primary);
+    color: white;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-md);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(12px);
+    transition: all var(--transition-base);
+    z-index: 100;
+    font-size: 1rem;
+    cursor: pointer;
+}
+.scroll-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+.scroll-top:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+
+
+/* ================================================================
+   14. RESPONSIVE BREAKPOINTS
+================================================================ */
+@media (max-width: 1024px) {
+    :root { --section-gap: 5rem; }
+
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+    .footer-brand { grid-column: 1 / -1; }
+}
+
+@media (max-width: 768px) {
+    :root {
+        --section-gap:       4rem;
+        --container-padding: 1.25rem;
+    }
+
+    .navbar-nav,
+    .navbar-actions { display: none; }
+
+    .navbar-hamburger { display: flex; }
+
+    .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.25rem;
+    }
+
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .footer-brand { grid-column: 1 / -1; }
+
+    .footer-bottom { flex-direction: column; text-align: center; }
+    .footer-legal  { justify-content: center; }
+}
+
+@media (max-width: 480px) {
+    .footer-grid { grid-template-columns: 1fr; }
+    .btn-lg { padding: 0.875rem 1.75rem; }
+}
